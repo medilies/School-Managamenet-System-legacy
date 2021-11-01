@@ -1,0 +1,74 @@
+Table establishments as e{
+  name varchar(20) [pk]
+  created_at date
+  updated_at date
+}
+
+Table years as y{
+    year tinyint [pk]
+    created_at date
+    updated_at date
+}
+
+Table cycles as cy{
+  name varchar(20) [pk]
+}
+
+table classes_types as ct{
+  id int [pk, increment]
+  name varchar(20)
+  cycle_id int [ref: > cy.name]
+}
+
+Table establishment_classes as x{
+  id int [pk]
+  class_type_id int [ref: > ct.id]
+  establishment_id int [ref: > e.name]
+}
+
+Table classes as cc{
+  id int [pk]
+  establishment_class_id int [ref: > x.id]
+  year int [ref: > y.year]
+  active boolean
+  capacity mediumint
+}
+
+Table students as s {
+  id int [pk, increment]
+  created_at date
+  updated_at date
+  fname varchar(50) [not null]
+  lname varchar(50) [not null]
+  bday date
+  ar_fname varchar(50)
+  ar_lname varchar(50)
+}
+
+Table studies_in as in{
+  student_id int [ref: > s.id]
+  class_id int [ref: > cc.id]
+  sub_at date
+  sub_modified_at date
+  accepted boolean
+  paid boolean
+}
+
+
+table parents as p{
+  id int [pk]
+  fname varchar(40)
+  lname varchar(40)
+  ar_fname varchar(40)
+  ar_lname varchar(40)
+  phone varchar(14)
+  email varchar(72)
+  address varchar(120)
+  profession varchar(30)
+}
+
+Table student_parent{
+  parent_id int [pk, ref: > p.id]
+  student_id int [pk, ref: > s.id]
+  relationship varchar(20)
+}

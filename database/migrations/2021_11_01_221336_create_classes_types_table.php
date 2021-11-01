@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstablishmentTable extends Migration
+class CreateClassesTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateEstablishmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('establishments', function (Blueprint $table) {
-            $table->string('establishment', 20);
+        Schema::create('classes_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('cycle', 20);
             //
-            $table->dateTime('created_at')
+            $table->dateTime('sub_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->dateTime('sub_modified_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //
-            $table->primary('establishment');
+            $table->foreign('cycle')->references('cycle')->on('cycles');
         });
     }
 
@@ -33,6 +35,6 @@ class CreateEstablishmentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('establishment');
+        Schema::dropIfExists('classes_types');
     }
 }

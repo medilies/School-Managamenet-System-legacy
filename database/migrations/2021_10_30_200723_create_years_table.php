@@ -17,6 +17,9 @@ class CreateYearsTable extends Migration
             $table->unsignedTinyInteger('year');
             $table->dateTime('created_at')
                 ->useCurrent();
+            $table->dateTime('updated_at')
+                ->useCurrent()
+                ->useCurrentOnUpdate();
             $table->primary('year');
         });
     }

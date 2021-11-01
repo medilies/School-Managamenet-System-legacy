@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEstablishmentTable extends Migration
+class CreateStudiesInTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,21 @@ class CreateEstablishmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('establishments', function (Blueprint $table) {
-            $table->string('establishment', 20);
+        Schema::create('studies_in', function (Blueprint $table) {
             //
-            $table->dateTime('created_at')
+            $table->boolean('accepted');
+            $table->boolean('paid');
+            //
+            $table->dateTime('sub_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->dateTime('sub_modified_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //
-            $table->primary('establishment');
+            $table->foreignId('student_id')
+                ->constrained();
+            $table->foreignId('class_id')
+                ->constrained();
         });
     }
 
@@ -33,6 +38,6 @@ class CreateEstablishmentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('establishment');
+        Schema::dropIfExists('studies_in');
     }
 }

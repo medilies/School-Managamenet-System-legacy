@@ -14,14 +14,15 @@ class CreateCyclesTable extends Migration
     public function up()
     {
         Schema::create('cycles', function (Blueprint $table) {
-            $table->id();
-            $table->set('cycle', ['primaire', 'moyen', 'secondaire']);
-            // $table->set('ar_cycle', ['ابتدائي', 'متوسط', 'ثانوي']);
-            $table->dateTime('created_at')
+            $table->string('cycle', 20);
+            //
+            $table->dateTime('sub_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->dateTime('sub_modified_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
+            //
+            $table->primary('cycle');
         });
     }
 
