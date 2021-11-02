@@ -1,29 +1,30 @@
 Table establishments as e{
-  name varchar(20) [pk]
+  establishment varchar(20) [pk]
   created_at date
   updated_at date
 }
 
 Table years as y{
-    year tinyint [pk]
+    year int2 [pk]
     created_at date
     updated_at date
 }
 
 Table cycles as cy{
-  name varchar(20) [pk]
+  cycle varchar(20) [pk]
 }
 
 table classes_types as ct{
   id int [pk, increment]
-  name varchar(20)
-  cycle_id int [ref: > cy.name]
+  name varchar(20) [not null]
+  cycle int [ref: > cy.cycle]
 }
 
+// this table isn't really a bridge table
 Table establishment_classes as x{
   id int [pk]
   class_type_id int [ref: > ct.id]
-  establishment_id int [ref: > e.name]
+  establishment int [ref: > e.establishment]
 }
 
 Table classes as cc{
@@ -31,7 +32,7 @@ Table classes as cc{
   establishment_class_id int [ref: > x.id]
   year int [ref: > y.year]
   active boolean
-  capacity mediumint
+  capacity int2
 }
 
 Table students as s {
@@ -40,9 +41,10 @@ Table students as s {
   updated_at date
   fname varchar(50) [not null]
   lname varchar(50) [not null]
-  bday date
-  ar_fname varchar(50)
-  ar_lname varchar(50)
+  bday date [not null]
+  bplace varchar(20) [not null]
+  ar_fname varchar(50) [not null]
+  ar_lname varchar(50) [not null]
 }
 
 Table studies_in as in{
@@ -57,16 +59,17 @@ Table studies_in as in{
 
 table parents as p{
   id int [pk]
-  fname varchar(40)
-  lname varchar(40)
+  fname varchar(40) [not null]
+  lname varchar(40) [not null]
   ar_fname varchar(40)
   ar_lname varchar(40)
-  phone varchar(14)
+  phone varchar(14) [not null]
   email varchar(72)
   address varchar(120)
-  profession varchar(30)
+  profession varchar(30) [not null]
 }
 
+// Bridge
 Table student_parent{
   parent_id int [pk, ref: > p.id]
   student_id int [pk, ref: > s.id]

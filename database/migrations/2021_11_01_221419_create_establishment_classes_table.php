@@ -15,10 +15,10 @@ class CreateEstablishmentClassesTable extends Migration
     {
         Schema::create('establishment_classes', function (Blueprint $table) {
             $table->id();
-            $table->string('establishment_id', 20);
+            $table->string('establishment', 20);
             //
             $table->foreignId('class_type_id')->references('id')->on('classes_types');
-            $table->foreign('establishment_id')->references('establishment')->on('establishments');
+            $table->foreign('establishment')->references('establishment')->on('establishments');
         });
     }
 

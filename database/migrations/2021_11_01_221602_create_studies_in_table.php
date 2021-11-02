@@ -15,8 +15,8 @@ class CreateStudiesInTable extends Migration
     {
         Schema::create('studies_in', function (Blueprint $table) {
             //
-            $table->boolean('accepted');
-            $table->boolean('paid');
+            $table->boolean('accepted')->default(0);
+            $table->boolean('paid')->default(0);
             //
             $table->dateTime('sub_at')
                 ->useCurrent();
@@ -24,10 +24,8 @@ class CreateStudiesInTable extends Migration
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //
-            $table->foreignId('student_id')
-                ->constrained();
-            $table->foreignId('class_id')
-                ->constrained();
+            $table->foreignId('student_id')->constrained();
+            $table->foreignId('class_id')->constrained();
         });
     }
 

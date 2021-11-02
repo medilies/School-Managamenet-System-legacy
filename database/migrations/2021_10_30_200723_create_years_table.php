@@ -14,12 +14,14 @@ class CreateYearsTable extends Migration
     public function up()
     {
         Schema::create('years', function (Blueprint $table) {
-            $table->unsignedTinyInteger('year');
+            $table->unsignedSmallInteger('year');
+            //
             $table->dateTime('created_at')
                 ->useCurrent();
             $table->dateTime('updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
+            //
             $table->primary('year');
         });
     }
