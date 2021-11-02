@@ -20,8 +20,10 @@ class CreateClassesTable extends Migration
             $table->boolean('active')->default(false);
             $table->unsignedSmallInteger('capacity')->default(0);
             //
-            $table->foreign('year')->references('year')->on('years');
-            $table->foreign('establishment_class_id')->references('id')->on('establishment_classes');
+            $table->foreign('year')
+                ->references('year')->on('years');
+            $table->foreign('establishment_class_id')
+                ->references('id')->on('establishment_classes');
         });
     }
 

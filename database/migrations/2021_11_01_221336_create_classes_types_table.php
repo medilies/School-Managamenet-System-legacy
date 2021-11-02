@@ -15,7 +15,7 @@ class CreateClassesTypesTable extends Migration
     {
         Schema::create('classes_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 25);
+            $table->string('name', 50);
             $table->string('cycle', 20);
             //
             $table->dateTime('sub_at')
@@ -24,7 +24,8 @@ class CreateClassesTypesTable extends Migration
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //
-            $table->foreign('cycle')->references('cycle')->on('cycles');
+            $table->foreign('cycle')
+                ->references('cycle')->on('cycles');
         });
     }
 

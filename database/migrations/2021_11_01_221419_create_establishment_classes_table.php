@@ -17,8 +17,10 @@ class CreateEstablishmentClassesTable extends Migration
             $table->id();
             $table->string('establishment', 20);
             //
-            $table->foreignId('class_type_id')->references('id')->on('classes_types');
-            $table->foreign('establishment')->references('establishment')->on('establishments');
+            $table->foreignId('class_type_id')
+                ->references('id')->on('classes_types');
+            $table->foreign('establishment')
+                ->references('establishment')->on('establishments');
         });
     }
 
