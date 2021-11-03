@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentParentTable extends Migration
+class CreateParentalLinksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,16 @@ class CreateStudentParentTable extends Migration
      */
     public function up()
     {
-        Schema::create('student_parent', function (Blueprint $table) {
+        Schema::create('parental_links', function (Blueprint $table) {
             $table->string('rel', 15);
             //
-            $table->foreignId('parent_id')->constrained();
+            $table->dateTime('created_at')
+                ->useCurrent();
+            $table->dateTime('updated_at')
+                ->useCurrent()
+                ->useCurrentOnUpdate();
+            //
+            $table->foreignId('client_id')->constrained();
             $table->foreignId('student_id')->constrained();
         });
     }
@@ -28,6 +34,6 @@ class CreateStudentParentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_parent');
+        Schema::dropIfExists('parental_links');
     }
 }

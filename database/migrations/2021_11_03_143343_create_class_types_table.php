@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCyclesTable extends Migration
+class CreateClassTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,19 @@ class CreateCyclesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cycles', function (Blueprint $table) {
+        Schema::create('class_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 50);
             $table->string('cycle', 20);
             //
-            $table->dateTime('sub_at')
+            $table->dateTime('created_at')
                 ->useCurrent();
-            $table->dateTime('sub_modified_at')
+            $table->dateTime('updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //
-            $table->primary('cycle');
+            $table->foreign('cycle')
+                ->references('cycle')->on('cycles');
         });
     }
 
@@ -33,6 +36,6 @@ class CreateCyclesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cycles');
+        Schema::dropIfExists('class_types');
     }
 }

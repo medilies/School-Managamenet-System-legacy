@@ -21,7 +21,7 @@ class EducSystem extends Seeder
             ['cycle' => 'secondaire'],
         ]);
 
-        DB::table('classes_types')->insert([
+        DB::table('class_types')->insert([
             ['cycle' => 'préscolaire', 'name' => 'préscolaire'],
             ['cycle' => 'primaire', 'name' => '1re AP'],
             ['cycle' => 'primaire', 'name' => '2e AP'],

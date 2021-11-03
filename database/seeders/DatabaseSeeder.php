@@ -15,8 +15,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // https://stackoverflow.com/questions/28924859/laravel-5-multiple-seeders-in-databaseseeder-php
-        $this->call([EducSystem::class,EstablishmentExample::class]);
-
+        $this->call(
+            [
+                EducSystem::class,
+                EstablishmentExample::class
+            ]
+        );
     }
 }

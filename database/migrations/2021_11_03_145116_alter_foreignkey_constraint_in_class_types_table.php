@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterForeignkeyConstraintInClassesTypesTable extends Migration
+class AlterForeignkeyConstraintInClassTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AlterForeignkeyConstraintInClassesTypesTable extends Migration
      */
     public function up()
     {
-        Schema::table('classes_types', function (Blueprint $table) {
-            $table->dropForeign('classes_types_cycle_foreign');
+        Schema::table('class_types', function (Blueprint $table) {
+            $table->dropForeign('class_types_cycle_foreign');
             //
             $table->foreign('cycle')
                 ->references('cycle')->on('cycles')
@@ -29,7 +29,7 @@ class AlterForeignkeyConstraintInClassesTypesTable extends Migration
      */
     public function down()
     {
-        Schema::table('classes_types', function (Blueprint $table) {
+        Schema::table('class_types', function (Blueprint $table) {
             //
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassesTable extends Migration
+class CreateYearClassesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,18 @@ class CreateClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('year_classes', function (Blueprint $table) {
             $table->id();
             $table->unsignedSmallInteger('year');
             $table->unsignedBigInteger('establishment_class_id');
             $table->boolean('active')->default(false);
             $table->unsignedSmallInteger('capacity')->default(0);
+            //
+            $table->dateTime('created_at')
+                ->useCurrent();
+            $table->dateTime('updated_at')
+                ->useCurrent()
+                ->useCurrentOnUpdate();
             //
             $table->foreign('year')
                 ->references('year')->on('years');
@@ -34,6 +40,6 @@ class CreateClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('year_classes');
     }
 }
