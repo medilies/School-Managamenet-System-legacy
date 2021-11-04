@@ -17,9 +17,9 @@ class CreateEstablishmentClassesTable extends Migration
             $table->id();
             $table->string('establishment', 20);
             //
-            $table->dateTime('created_at')
+            $table->timestamp('created_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->timestamp('updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //

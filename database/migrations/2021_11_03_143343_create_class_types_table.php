@@ -18,9 +18,9 @@ class CreateClassTypesTable extends Migration
             $table->string('name', 50);
             $table->string('cycle', 20);
             //
-            $table->dateTime('created_at')
+            $table->timestamp('created_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->timestamp('updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //

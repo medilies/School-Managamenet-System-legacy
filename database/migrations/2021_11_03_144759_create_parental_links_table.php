@@ -16,9 +16,9 @@ class CreateParentalLinksTable extends Migration
         Schema::create('parental_links', function (Blueprint $table) {
             $table->string('rel', 15);
             //
-            $table->dateTime('created_at')
+            $table->timestamp('created_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->timestamp('updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //

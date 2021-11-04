@@ -14,12 +14,12 @@ class CreateStudiesInTable extends Migration
     public function up()
     {
         Schema::create('studies_in', function (Blueprint $table) {
-            $table->boolean('accepted')->default(0);
+            $table->set("validation", ["pending", "accepted", "refused"])->default("pending");
             $table->boolean('paid')->default(0);
             //
-            $table->dateTime('created_at')
+            $table->timestamp('sub_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->timestamp('sub_updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //

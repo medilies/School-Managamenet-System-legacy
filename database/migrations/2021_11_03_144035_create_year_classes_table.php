@@ -15,14 +15,14 @@ class CreateYearClassesTable extends Migration
     {
         Schema::create('year_classes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('year');
+            $table->year('year');
             $table->unsignedBigInteger('establishment_class_id');
             $table->boolean('active')->default(false);
             $table->unsignedSmallInteger('capacity')->default(0);
             //
-            $table->dateTime('created_at')
+            $table->timestamp('created_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->timestamp('updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //

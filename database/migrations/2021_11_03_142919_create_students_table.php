@@ -27,9 +27,9 @@ class CreateStudentsTable extends Migration
             // $table->string('email', 72);
             // $table->string('address', 50); // state, city, zip, door ???
             //
-            $table->dateTime('created_at')
+            $table->timestamp('created_at')
                 ->useCurrent();
-            $table->dateTime('updated_at')
+            $table->timestamp('updated_at')
                 ->useCurrent()
                 ->useCurrentOnUpdate();
             //

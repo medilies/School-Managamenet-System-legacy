@@ -1,63 +1,71 @@
+Table cycles{
+  cycle varchar(20) [pk]
+  created_at timestamp
+  updated_at timestamp
+}
+
+table class_types as ct{
+  id int [pk, increment]
+  name varchar(50) [not null]
+  cycle varchar(20) [ref: > cycles.cycle]
+  created_at timestamp
+  updated_at timestamp
+}
+
 Table establishments as e{
   establishment varchar(20) [pk]
-  created_at date
-  updated_at date
+  created_at timestamp
+  updated_at timestamp
 }
 
 Table years as y{
-    year int2 [pk]
-    created_at date
-    updated_at date
-}
-
-Table cycles as cy{
-  cycle varchar(20) [pk]
-}
-
-table classes_types as ct{
-  id int [pk, increment]
-  name varchar(20) [not null]
-  cycle int [ref: > cy.cycle]
+    year year [pk]
+    created_at timestamp
+    updated_at timestamp
 }
 
 // this table isn't really a bridge table
-Table establishment_classes as x{
+Table establishment_classes as ec{
   id int [pk]
   class_type_id int [ref: > ct.id]
   establishment int [ref: > e.establishment]
+  created_at timestamp
+  updated_at timestamp
 }
 
-Table classes as cc{
+Table year_classes as yc{
   id int [pk]
-  establishment_class_id int [ref: > x.id]
-  year int [ref: > y.year]
+  establishment_class_id int [ref: > ec.id]
+  year year [ref: > y.year]
   active boolean
   capacity int2
+  created_at timestamp
+  updated_at timestamp
 }
 
 Table students as s {
   id int [pk, increment]
-  created_at date
-  updated_at date
   fname varchar(50) [not null]
   lname varchar(50) [not null]
   bday date [not null]
   bplace varchar(20) [not null]
   ar_fname varchar(50) [not null]
   ar_lname varchar(50) [not null]
+  created_at timestamp
+  updated_at timestamp
 }
 
 Table studies_in as in{
   student_id int [ref: > s.id]
-  class_id int [ref: > cc.id]
-  sub_at date
-  sub_modified_at date
-  accepted boolean
+  year_class_id int [ref: > yc.id]
+  validation enum(pending, accepted, refused)
   paid boolean
+  sub_at timestamp // sub at
+  sub_updated_at timestamp
 }
 
 
-table parents as p{
+table clients as p{
   id int [pk]
   fname varchar(40) [not null]
   lname varchar(40) [not null]
@@ -67,11 +75,13 @@ table parents as p{
   email varchar(72)
   address varchar(120)
   profession varchar(30) [not null]
+  created_at timestamp
+  updated_at timestamp
 }
 
 // Bridge
-Table student_parent{
-  parent_id int [pk, ref: > p.id]
-  student_id int [pk, ref: > s.id]
+Table parental_links{
+  client_id int [ref: > p.id]
+  student_id int [ref: > s.id]
   relationship varchar(20)
 }
