@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Establishment extends Model
 {
     use HasFactory;
+
+    public function establishmentClasses()
+    {
+        return $this->hasMany(EstablishmentClass::class);
+    }
 }

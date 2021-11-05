@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ClassType extends Model
 {
     use HasFactory;
+
+    public function cycle()
+    {
+        return $this->belongsTo(Cycle::class, 'cycle', 'cycle');
+    }
+
+    public function establishmentClasses()
+    {
+        return $this->hasMany(EstablishmentClass::class);
+    }
 }
