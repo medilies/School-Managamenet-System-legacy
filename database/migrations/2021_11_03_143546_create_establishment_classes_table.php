@@ -27,6 +27,7 @@ class CreateEstablishmentClassesTable extends Migration
                 ->references('id')->on('class_types');
             $table->foreign('establishment')
                 ->references('establishment')->on('establishments');
+            $table->unique(['class_type_id', 'establishment']);
         });
     }
 
