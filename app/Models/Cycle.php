@@ -17,4 +17,9 @@ class Cycle extends Model
     {
         return $this->hasMany(ClassType::class, 'cycle', 'cycle');
     }
+
+    public function establishmentClasses()
+    {
+        return $this->hasManyThrough(EstablishmentClass::class, ClassType::class, 'cycle');
+    }
 }

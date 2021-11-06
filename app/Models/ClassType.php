@@ -18,4 +18,9 @@ class ClassType extends Model
     {
         return $this->hasMany(EstablishmentClass::class);
     }
+
+    public function yearClasses()
+    {
+        return $this->hasManyThrough(YearClass::class, EstablishmentClass::class);
+    }
 }

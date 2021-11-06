@@ -18,4 +18,9 @@ class EstablishmentClass extends Model
     {
         return $this->belongsTo(ClassType::class);
     }
+
+    public function yearClasses()
+    {
+        return $this->hasMany(YearClass::class);
+    }
 }

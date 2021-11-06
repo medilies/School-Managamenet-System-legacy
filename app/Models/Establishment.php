@@ -9,8 +9,17 @@ class Establishment extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'establishment';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     public function establishmentClasses()
     {
-        return $this->hasMany(EstablishmentClass::class);
+        return $this->hasMany(EstablishmentClass::class, 'establishment');
+    }
+
+    public function yearClasses()
+    {
+        return $this->hasManyThrough(YearClass::class, EstablishmentClass::class, 'establishment');
     }
 }
