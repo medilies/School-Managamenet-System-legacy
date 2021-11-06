@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(
             [
                 EducSystem::class,
-                EstablishmentExample::class
+                EstablishmentExample::class,
+                EstablishmentClassSeeder::class,
+                YearClassSeeder::class,
             ]
         );
     }
