@@ -9,9 +9,9 @@ class Student extends Model
 {
     use HasFactory;
 
-    public function studiesIn()
+    public function studentRegistrations()
     {
-        return $this->hasMany(StudiesIn::class);
+        return $this->hasMany(StudentRegistration::class);
     }
 
     public function parentalLinks()

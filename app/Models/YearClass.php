@@ -14,8 +14,8 @@ class YearClass extends Model
         return $this->BelongsTo(Year::class, 'year', 'year');
     }
 
-    public function studiesIn()
+    public function studentRegistrations()
     {
-        return $this->hasMany(studiesIn::class);
+        return $this->hasMany(StudentRegistration::class);
     }
 }

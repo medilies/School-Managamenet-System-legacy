@@ -20,7 +20,7 @@ The **parental_links** table is a pure _bridge table_.
 
 About Laravel naming conventions:
 
--   Only the **studies_in** table doesn't follow tables naming conventions.
+-   ~~Only the **studies_in** table doesn't follow tables naming conventions.~~
 -   Only **establishments** & **years** tables do not follow IDs naming convetions.
 
 Due to the non-IT background of the app users and their expected laziness we made the choice of not setting **phone** & **email** columns to _unique_ and set them to nullable as much as possible.
