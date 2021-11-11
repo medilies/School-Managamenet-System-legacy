@@ -30,6 +30,7 @@ class CreateYearClassesTable extends Migration
                 ->references('year')->on('years');
             $table->foreign('establishment_class_id')
                 ->references('id')->on('establishment_classes');
+            $table->unique(['year', 'establishment_class_id']);
         });
     }
 

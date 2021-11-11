@@ -46,18 +46,18 @@ Due to the non-IT background of the app users and their expected laziness we mad
 | estabmishment          | hasMany                               | establishment_classes | yes  |        |
 | estabmishment          | hasManyThrough: establishment_classes | year_classes          | yes  |        |
 | estabmishment          | 1:*                                   | student_registrations |      |        |
-| estabmishment          | *:*                                   | students              |      |        |
-| establishement         | *.*                                   | years                 |      |        |
+| estabmishment          | \*:\*                                 | students              |      |        |
+| establishement         | \*:\*                                 | years                 |      |        |
 | establishment_classes  | belongsTo                             | establishment         | yes  |        |
 | establishment_classes  | belongsTo                             | class_types           | yes  |        |
 | establishment_classes  | hasMany                               | year_classes          | yes  |        |
 | establishement_classes | hasManyThrought: year_classes         | student_registrations | no   |        |
-| establishement_classes | *:*                                   | students              |      |        |
-| establishment_classes  | *:*                                   | years                 |      |        |
+| establishement_classes | \*:\*                                 | students              |      |        |
+| establishment_classes  | \*:\*                                 | years                 |      |        |
 | years                  | hasMany                               | year_classes          | yes  |        |
 | years                  | hasManyThrough: year_classes          | student_registrations | yes  |        |
-| years                  | *:*                                   | students              |      |        |
-| years                  | *:*                                   | establishment_classes |      |        |
+| years                  | \*:\*                                 | students              |      |        |
+| years                  | \*:\*                                 | establishment_classes |      |        |
 | year_classes           | belongsTo                             | years                 | yes  |        |
 | year_classes           | belongsTo                             | establishment_classes | yes  |        |
 | year_classes           | hasMany                               | student_registrations | yes  |        |

@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\ClassType;
 use App\Models\Establishment;
 use App\Models\EstablishmentClass;
+use Illuminate\Support\Facades\DB;
 
 class EstablishmentClassSeeder extends Seeder
 {
@@ -23,12 +24,22 @@ class EstablishmentClassSeeder extends Seeder
         foreach ($establishments as $establishment) {
             foreach ($class_types as $class_type) {
 
+                $class_type_id = $class_type->id;
+                $establishment_establishment = $establishment->establishment;
+
                 $establishment_class_data = [
-                    'class_type_id' => $class_type->id,
-                    'establishment' => $establishment->establishment,
+                    'class_type_id' => $class_type_id,
+                    'establishment' => $establishment_establishment,
                 ];
 
-                EstablishmentClass::create($establishment_class_data);
+                $already_exist = DB::table('establishment_classes')
+                    ->where('class_type_id', $class_type_id)
+                    ->where('establishment', $establishment_establishment)
+                    ->exists();
+
+                if (!$already_exist) {
+                    EstablishmentClass::create($establishment_class_data);
+                }
             }
         }
     }

@@ -22,5 +22,4 @@ class CycleController extends Controller
     {
         dd($cycle->establishmentClasses()->get());
     }
-
 }

@@ -18,4 +18,12 @@ class Student extends Model
     {
         return $this->hasMany(ParentalLink::class);
     }
+
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class, 'parental_links')
+            // ->as('relationship')
+            ->withPivot(['rel'])
+            ->withTimestamps();
+    }
 }

@@ -38,4 +38,3 @@ Route::get('establishment/{establishment}/year_classes', [EstablishmentControlle
 // test Year model and its relationships
 Route::get('years', [YearController::class, 'showAll']);
 Route::get('year/{year}/year_classes', [YearController::class, 'showAllYearClasses']);
-

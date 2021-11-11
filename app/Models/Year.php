@@ -15,6 +15,11 @@ class Year extends Model
 
     public function yearClasses()
     {
-        return $this->hasMany(YearClass::class, 'year', 'year');
+        return $this->hasMany(YearClass::class, 'year');
+    }
+
+    public function studentRegistrations()
+    {
+        return $this->hasManyThrough(StudentRegistration::class, YearClass::class, 'year');
     }
 }

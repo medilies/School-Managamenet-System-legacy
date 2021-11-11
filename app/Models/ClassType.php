@@ -9,6 +9,10 @@ class ClassType extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name'
+    ];
+
     public function cycle()
     {
         return $this->belongsTo(Cycle::class, 'cycle', 'cycle');
