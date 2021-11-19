@@ -1,5 +1,4 @@
-DB
-=
+# DB
 
 ![db URL diagram](./db.png)
 
@@ -32,20 +31,20 @@ Due to the non-IT background of the app users and their expected laziness we mad
 ## Relationships
 
 | Table 1                | relationship                          | Table 2               | done | useful |
-|------------------------|---------------------------------------|-----------------------|------|--------|
+| ---------------------- | ------------------------------------- | --------------------- | ---- | ------ |
 | cycles                 | hasMany                               | class_types           | yes  |        |
 | cycles                 | hasManyThrough: class_types           | establishment_classes | yes  |        |
-| cycles                 | 1:*                                   | year_classes          |      |        |
-| cycles                 | 1:*                                   | student_registrations |      |        |
-| cycles                 | 1:*                                   | students              |      |        |
+| cycles                 | 1:\*                                  | year_classes          |      |        |
+| cycles                 | 1:\*                                  | student_registrations |      |        |
+| cycles                 | 1:\*                                  | students              |      |        |
 | class_types            | belongsTo                             | cycles                | yes  |        |
 | class_types            | hasMany                               | establishment_classes | yes  |        |
 | class_types            | hasManyThrough: establishment_classes | year_classes          | yes  |        |
-| class_types            | 1:*                                   | student_registrations |      |        |
-| class_types            | 1:*                                   | students              |      |        |
+| class_types            | 1:\*                                  | student_registrations |      |        |
+| class_types            | 1:\*                                  | students              |      |        |
 | estabmishment          | hasMany                               | establishment_classes | yes  |        |
 | estabmishment          | hasManyThrough: establishment_classes | year_classes          | yes  |        |
-| estabmishment          | 1:*                                   | student_registrations |      |        |
+| estabmishment          | 1:\*                                  | student_registrations |      |        |
 | estabmishment          | \*:\*                                 | students              |      |        |
 | establishement         | \*:\*                                 | years                 |      |        |
 | establishment_classes  | belongsTo                             | establishment         | yes  |        |
@@ -69,12 +68,13 @@ Due to the non-IT background of the app users and their expected laziness we mad
 | clients                | hasMany                               | parental_links        | yes  |        |
 | clients                | belongsToMany                         | students              | yes  |        |
 
-TODO
-=
+# TODO
 
 Add a **payments** tables that helps track many payments + customies payments policies per **YearClass**.
 
 > Payments table
+
+> Rename cycle in class_types to cycle_name
 
 > Charts
 
