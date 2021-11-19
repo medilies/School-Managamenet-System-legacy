@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Year;
+use App\Models\StudentRegistration;
 use Illuminate\Http\Request;
 
-class YearController extends Controller
+class StudentRegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class YearController extends Controller
      */
     public function index()
     {
-        return Year::all();
+        return StudentRegistration::all();
     }
 
     /**
@@ -41,21 +41,21 @@ class YearController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Year  $year
+     * @param  \App\Models\StudentRegistration  $studentRegistration
      * @return \Illuminate\Http\Response
      */
-    public function show(Year $year)
+    public function show(StudentRegistration $studentRegistration)
     {
-        return $year;
+        return $studentRegistration;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Year  $year
+     * @param  \App\Models\StudentRegistration  $studentRegistration
      * @return \Illuminate\Http\Response
      */
-    public function edit(Year $year)
+    public function edit(StudentRegistration $studentRegistration)
     {
         //
     }
@@ -64,10 +64,10 @@ class YearController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Year  $year
+     * @param  \App\Models\StudentRegistration  $studentRegistration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Year $year)
+    public function update(Request $request, StudentRegistration $studentRegistration)
     {
         //
     }
@@ -75,10 +75,10 @@ class YearController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Year  $year
+     * @param  \App\Models\StudentRegistration  $studentRegistration
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Year $year)
+    public function destroy(StudentRegistration $studentRegistration)
     {
         //
     }

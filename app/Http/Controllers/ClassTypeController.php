@@ -2,28 +2,84 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ClassType;
+use Illuminate\Http\Request;
 
 class ClassTypeController extends Controller
 {
-    public function showAll(ClassType $class_type)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        dd($class_type);
+        return ClassType::all();
     }
 
-    public function showAllEstablishmentClasses(ClassType $class_type)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        dd($class_type->establishmentClasses()->get());
+        //
     }
 
-    public function showAllYearClasses(ClassType $class_type)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        dd($class_type->yearClasses()->get());
+        //
     }
 
-    public function show(ClassType $class_type)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\ClassType  $classType
+     * @return \Illuminate\Http\Response
+     */
+    public function show(ClassType $classType)
     {
-        dd($class_type);
+        return $classType;
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\ClassType  $classType
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(ClassType $classType)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\ClassType  $classType
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, ClassType $classType)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\ClassType  $classType
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(ClassType $classType)
+    {
+        //
     }
 }
