@@ -14,7 +14,8 @@ class CycleController extends Controller
      */
     public function index()
     {
-        return Cycle::all();
+        $cycles_data = Cycle::all();
+        return view('paginate.cycles', ['cycles' => $cycles_data]);
     }
 
     /**

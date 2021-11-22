@@ -14,7 +14,8 @@ class EstablishmentController extends Controller
      */
     public function index()
     {
-        return Establishment::all();
+        $establishments_data = Establishment::all();
+        return view('paginate.establishments', ['establishments' => $establishments_data]);
     }
 
     /**

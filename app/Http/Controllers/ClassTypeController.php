@@ -14,7 +14,8 @@ class ClassTypeController extends Controller
      */
     public function index()
     {
-        return ClassType::all();
+        $class_types_page = ClassType::paginate(10);
+        return view('paginate.class_types', ['class_types' => $class_types_page]);
     }
 
     /**
