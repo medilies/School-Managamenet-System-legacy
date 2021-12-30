@@ -25,7 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -36,7 +36,27 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'fname' => ['required',],
+            'ar_fname' => ['required',],
+            'lname' => ['required',],
+            'ar_lname' => ['required',],
+            'bday' => ['required', 'date'],
+            'bplace' => ['required',],
+        ]);
+
+        Student::create([
+            'fname' => $request->fname,
+            'ar_fname' => $request->ar_lname,
+            'lname' => $request->lname,
+            'ar_lname' => $request->ar_lname,
+            'bday' => $request->bday,
+            'bplace' => $request->bplace,
+
+        ]);
+
+        return redirect()->route('students.index');
     }
 
     /**

@@ -9,10 +9,14 @@ class Student extends Model
 {
     use HasFactory;
 
-    public function studentRegistrations()
-    {
-        return $this->hasMany(StudentRegistration::class);
-    }
+    protected $fillable = [
+        'fname',
+        'ar_fname',
+        'lname',
+        'ar_lname',
+        'bday',
+        'bplace',
+    ];
 
     public function parentalLinks()
     {
