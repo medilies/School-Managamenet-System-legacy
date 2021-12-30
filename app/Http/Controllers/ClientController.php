@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
@@ -24,7 +25,11 @@ class ClientController extends Controller
      */
     public function create()
     {
+
         return view('clients.create');
+
+
+
     }
 
     /**
@@ -35,7 +40,32 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validation_rules = [
+            'fname' => ['required',],
+            'ar_fname' => ['',],
+            'lname' => ['required',],
+            'ar_lname' => ['',],
+            'profession' => ['required',],
+            'phone' => ['numeric', 'required'],
+            'email' => ['email',],
+            'address' => ['',],
+        ];
+
+        $request->validate($validation_rules);
+
+        Client::create([
+            'fname' => $request->fname,
+            'ar_fname' => $request->ar_lname,
+            'lname' => $request->lname,
+            'ar_lname' => $request->ar_lname,
+            'profession' => $request->profession,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+        ]);
+
+        return redirect()->route('clients.index');
     }
 
     /**
