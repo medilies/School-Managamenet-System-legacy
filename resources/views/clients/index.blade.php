@@ -48,7 +48,7 @@
 
                                 <tbody class="bg-white divide-y divide-gray-200">
 
-                                    @foreach ($clients as $clients)
+                                    @foreach ($clients as $client)
 
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
@@ -60,17 +60,17 @@
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                            {{ $clients->fname }} {{ $clients->lname }}
+                                                            {{ $client->fname }} {{ $client->lname }}
                                                         </div>
                                                         <div class="text-sm text-gray-500">
-                                                            {{ $clients->ar_fname }} {{ $clients->ar_lname }}
+                                                            {{ $client->ar_fname }} {{ $client->ar_lname }}
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">{{ $clients->email }}</div>
-                                                <div class="text-sm text-gray-500">à {{ $clients->address }}</div>
+                                                <div class="text-sm text-gray-900">{{ $client->email }}</div>
+                                                <div class="text-sm text-gray-500">à {{ $client->address }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <span
@@ -79,10 +79,10 @@
                                                 </span>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $clients->created_at }}
+                                                {{ $client->created_at }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $clients->phone }}
+                                                {{ $client->phone }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
@@ -100,10 +100,10 @@
                 </div>
             </div>
 
+            {{ $clients->links() }}
 
         </div>
     </div>
-
 
 
 

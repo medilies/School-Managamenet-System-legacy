@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
@@ -15,11 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-
-        $clients_page = Client::paginate(7);
+        $clients_page = Client::paginate(3);
         return view('clients.index', ['clients' => $clients_page]);
-
-
     }
     /**
      * Show the form for creating a new resource.
@@ -28,11 +24,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-
         return view('clients.create');
-
-
-
     }
 
     /**
