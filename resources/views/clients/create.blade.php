@@ -16,128 +16,58 @@
                         @csrf
 
                         <div class="flex flex-wrap -mx-3 mb-6 ">
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 " for="fname">
+
+                            <x-forms.input name="fname" type="text">
+                                <x-slot name="label_text">
                                     Prénom
-                                </label>
-                                <input name="fname"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('fname', '') }}">
-                                @error('fname')
-                                    <div class="text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                </x-slot>
+                            </x-forms.input>
 
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 " for="lname">
+                            <x-forms.input name="lname" type="text">
+                                <x-slot name="label_text">
                                     Nom
-                                </label>
-                                <input name="lname"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('lname', '') }}">
-                                @error('lname')
-                                    <div class="  text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                </x-slot>
+                            </x-forms.input>
 
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 "
-                                    for="ar_fname">
+                            <x-forms.input name="ar_fname" type="text">
+                                <x-slot name="label_text">
                                     الاسم
-                                </label>
-                                <input name="ar_fname"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('ar_fname', '') }}">
-                                @error('ar_fname')
-                                    <div class="text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                </x-slot>
+                            </x-forms.input>
 
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 "
-                                    for="ar_lname">
+                            <x-forms.input name="ar_lname" type="text">
+                                <x-slot name="label_text">
                                     اللقب
-                                </label>
-                                <input name="ar_lname"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('ar_lname', '') }}">
-                                @error('ar_lname')
-                                    <div class="text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                </x-slot>
+                            </x-forms.input>
 
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 " for="address">
-                                    Address
-                                </label>
-                                <input name="address"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('address', '') }}">
-                                @error('address')
-                                    <div class="text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                            <x-forms.input name="address" type="text">
+                                <x-slot name="label_text">
+                                    Adresse
+                                </x-slot>
+                            </x-forms.input>
 
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 " for="email">
+                            <x-forms.input name="email" type="email">
+                                <x-slot name="label_text">
                                     Email
-                                </label>
-                                <input name="email" type="email"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('email', '') }}">
-                                @error('email')
-                                    <div class="text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                </x-slot>
+                            </x-forms.input>
 
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 " for="phone">
+                            <x-forms.input name="phone" type="tel">
+                                <x-slot name="label_text">
                                     TELEPHONE
-                                </label>
-                                <input name="phone"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('phone', '') }}">
-                                @error('phone')
-                                    <div class="text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                </x-slot>
+                            </x-forms.input>
 
-                            <div class="w-full md:w-1/2  px-3 mt-2">
-                                <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 "
-                                    for="profession">
+                            <x-forms.input name="profession" type="text">
+                                <x-slot name="label_text">
                                     Profession
-                                </label>
-                                <input name="profession"
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    value="{{ old('profession', '') }}">
-                                @error('profession')
-                                    <div class="text-red-500 mt-2 text-sm">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                                </x-slot>
+                            </x-forms.input>
 
                         </div>
 
-
-                        <button type="submit"
-                            class="bg-blue-500 p-3 text-center font-bold text-white rounded-lg float-right mt-10 text-l hover:bg-blue-700 ">
-                            Enregistrer
-                        </button>
+                        <x-forms.submit-btn />
 
                     </form>
 
