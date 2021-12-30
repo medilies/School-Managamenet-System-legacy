@@ -15,9 +15,11 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return Client::all();
-    }
+         $client= Client::all();
 
+         return view('clients.index');
+
+    }
     /**
      * Show the form for creating a new resource.
      *
