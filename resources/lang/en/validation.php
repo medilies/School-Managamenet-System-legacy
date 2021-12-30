@@ -153,6 +153,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'fname' => 'first name',
+        'ar_fname' => 'arabic first name',
+        'lname' => 'last name',
+        'ar_lname' => 'arabic last name',
+        'email' => 'E-mail adress',
+        'bday' => 'birthday date',
+        'bplace' => 'birth place',
+    ],
 
 ];
