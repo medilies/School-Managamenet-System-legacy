@@ -42,7 +42,11 @@
                             </x-forms.input>
 
                             <x-forms.input name="phone" type="tel">
-                                <x-slot name="label_text"> Téléphone </x-slot>
+
+                                <x-slot name="label_text">
+                                    telephone
+                                </x-slot>
+
                             </x-forms.input>
 
                             <x-forms.input name="profession" type="text">
