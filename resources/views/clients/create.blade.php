@@ -45,7 +45,7 @@
                                 <x-slot name="label_text"> Telephone </x-slot>
                             </x-forms.input>
 
-                            <x-forms.input type="phone" name="profession">
+                            <x-forms.input type="phone" name="profession    ">
                                 <x-slot name="label_text"> Profession </x-slot>
                             </x-forms.input>
 
