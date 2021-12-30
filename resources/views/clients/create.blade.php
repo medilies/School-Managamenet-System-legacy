@@ -17,6 +17,7 @@
 
                         <div class="flex flex-wrap -mx-3 mb-6 ">
 
+<<<<<<< HEAD
                             <x-forms.input type="text" name="fname">
                                 <x-slot name="label_text"> Prénom </x-slot>
                             </x-forms.input>
@@ -41,11 +42,11 @@
                                 <x-slot name="label_text"> Email </x-slot>
                             </x-forms.input>
 
-                            <x-forms.input type="phone" name="phone">
+                            <x-forms.input type="phone" name="tel">
                                 <x-slot name="label_text"> Telephone </x-slot>
                             </x-forms.input>
 
-                            <x-forms.input type="phone" name="profession    ">
+                            <x-forms.input type="phone" name="profession">
                                 <x-slot name="label_text"> Profession </x-slot>
                             </x-forms.input>
 
