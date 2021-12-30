@@ -12,7 +12,7 @@
                 <div class="p-6 bg-white border-b border-gray-200 flex ">
 
 
-<form action={{route('clients.create')}} method="post" class="w-full  border-2 p-4 " >
+<form action={{route('clients.store')}} method="post" class="w-full  border-2 p-4 " >
     @csrf
     <div class="flex flex-wrap -mx-3 mb-6 ">
 
