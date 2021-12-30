@@ -55,7 +55,7 @@
 
                             <x-forms.input name="phone" type="tel">
                                 <x-slot name="label_text">
-                                    TELEPHONE
+                                    telephone
                                 </x-slot>
                             </x-forms.input>
 

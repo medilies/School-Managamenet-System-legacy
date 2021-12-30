@@ -1,7 +1,7 @@
 <div class="w-full md:w-1/2 px-3 mt-2">
 
     {{-- LABEL --}}
-    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 " for="{{ $name }}">
+    <label class="block  tracking-wide text-gray-700 text-xs font-bold mb-2 " for="{{ $name }}">
         {{ $label_text }}
     </label>
 
