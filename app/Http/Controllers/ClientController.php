@@ -14,9 +14,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients_page = Client::paginate(3);
+        $clients_page = Client::paginate(10);
         return view('clients.index', ['clients' => $clients_page]);
     }
+
     /**
      * Show the form for creating a new resource.
      *

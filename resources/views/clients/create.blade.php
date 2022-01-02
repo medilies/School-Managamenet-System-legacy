@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clients') }}
+            {{ __('Ajouter un parent') }}
         </h2>
     </x-slot>
 
@@ -17,7 +17,6 @@
 
                         <div class="flex flex-wrap -mx-3 mb-6 ">
 
-<<<<<<< HEAD
                             <x-forms.input type="text" name="fname">
                                 <x-slot name="label_text"> Prénom </x-slot>
                             </x-forms.input>
@@ -39,11 +38,11 @@
                             </x-forms.input>
 
                             <x-forms.input type="text" name="email">
-                                <x-slot name="label_text"> Email </x-slot>
+                                <x-slot name="label_text"> E-mail </x-slot>
                             </x-forms.input>
 
                             <x-forms.input type="phone" name="tel">
-                                <x-slot name="label_text"> Telephone </x-slot>
+                                <x-slot name="label_text"> Téléphone </x-slot>
                             </x-forms.input>
 
                             <x-forms.input type="phone" name="profession">
