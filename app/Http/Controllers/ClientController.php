@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +15,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return Client::all();
+        $clients_page = Client::paginate(10);
+        return view('clients.index')
+            ->with('clients', $clients_page);
     }
 
     /**
@@ -24,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -35,7 +38,32 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate(
+            [
+                'fname' => ['required',],
+                'ar_fname' => ['',],
+                'lname' => ['required',],
+                'ar_lname' => ['',],
+                'profession' => ['required',],
+                'phone' => ['numeric', 'required'],
+                'email' => ['email',],
+                'address' => ['',],
+            ]
+        );
+
+        Client::create([
+            'fname' => ucwords(strtolower($request->fname)),
+            'ar_fname' => $request->ar_lname,
+            'lname' => strtoupper($request->lname),
+            'ar_lname' => $request->ar_lname,
+            'profession' => $request->profession,
+            'phone' => $request->phone,
+            'email' => strtolower($request->email),
+            'address' => $request->address,
+        ]);
+
+        return redirect()->route('clients.index');
     }
 
     /**

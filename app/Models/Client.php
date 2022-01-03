@@ -9,6 +9,17 @@ class Client extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'fname',
+        'ar_fname',
+        'lname',
+        'ar_lname',
+        'profession',
+        'phone',
+        'email',
+        'address',
+    ];
+
     public function parentalLinks()
     {
         return $this->hasMany(ParentalLink::class);
