@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,8 @@ class ClientController extends Controller
     public function index()
     {
         $clients_page = Client::paginate(10);
-        return view('clients.index', ['clients' => $clients_page]);
+        return view('clients.index')
+            ->with('clients', $clients_page);
     }
 
     /**
@@ -37,27 +39,27 @@ class ClientController extends Controller
     public function store(Request $request)
     {
 
-        $validation_rules = [
-            'fname' => ['required',],
-            'ar_fname' => ['',],
-            'lname' => ['required',],
-            'ar_lname' => ['',],
-            'profession' => ['required',],
-            'phone' => ['numeric', 'required'],
-            'email' => ['email',],
-            'address' => ['',],
-        ];
-
-        $request->validate($validation_rules);
+        $request->validate(
+            [
+                'fname' => ['required',],
+                'ar_fname' => ['',],
+                'lname' => ['required',],
+                'ar_lname' => ['',],
+                'profession' => ['required',],
+                'phone' => ['numeric', 'required'],
+                'email' => ['email',],
+                'address' => ['',],
+            ]
+        );
 
         Client::create([
-            'fname' => $request->fname,
+            'fname' => ucwords(strtolower($request->fname)),
             'ar_fname' => $request->ar_lname,
-            'lname' => $request->lname,
+            'lname' => strtoupper($request->lname),
             'ar_lname' => $request->ar_lname,
             'profession' => $request->profession,
             'phone' => $request->phone,
-            'email' => $request->email,
+            'email' => strtolower($request->email),
             'address' => $request->address,
         ]);
 

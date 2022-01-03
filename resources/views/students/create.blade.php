@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Students') }}
+            {{ __('Ajouté un étudiant') }}
         </h2>
     </x-slot>
 
@@ -43,7 +43,7 @@
 
                         </div>
 
-                        <x-forms.submit-btn />
+                        <x-forms.submit-btn> Ajouter </x-forms.submit-btn>
 
                     </form>
 

@@ -52,7 +52,7 @@
 
                         </div>
 
-                        <x-forms.submit-btn />
+                        <x-forms.submit-btn> Ajouter </x-forms.submit-btn>
 
                     </form>
 
