@@ -11,6 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200 flex ">
 
+                    {{-- {{ dd($errors) }} --}}
                     <form action={{ route('clients.store') }} method="post" class="w-full  border-2 p-4 ">
 
                         @csrf
@@ -41,14 +42,13 @@
                                 <x-slot name="label_text"> E-mail </x-slot>
                             </x-forms.input>
 
-                            <x-forms.input type="phone" name="tel">
+                            <x-forms.input type="tel" name="phone">
                                 <x-slot name="label_text"> Téléphone </x-slot>
                             </x-forms.input>
 
                             <x-forms.input type="phone" name="profession">
                                 <x-slot name="label_text"> Profession </x-slot>
                             </x-forms.input>
-
 
                         </div>
 

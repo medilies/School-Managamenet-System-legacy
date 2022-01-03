@@ -15,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students_page = Student::paginate(10);
+        $students_page = Student::orderBy('id', 'desc')->paginate(10);
+
         return view('students.index')
             ->with('students', $students_page);
     }
@@ -39,25 +40,18 @@ class StudentController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate(
-            [
-                'fname' => ['required',],
-                'ar_fname' => ['required',],
-                'lname' => ['required',],
-                'ar_lname' => ['required',],
-                'bday' => ['required', 'date'],
-                'bplace' => ['required',],
-            ]
+        Student::create(
+            $request->validate(
+                [
+                    'fname' => ['required',],
+                    'ar_fname' => ['required',],
+                    'lname' => ['required',],
+                    'ar_lname' => ['required',],
+                    'bday' => ['required', 'date'],
+                    'bplace' => ['required',],
+                ]
+            )
         );
-
-        Student::create([
-            'fname' => ucwords(strtolower($request->fname)),
-            'ar_fname' => $request->ar_fname,
-            'lname' => strtoupper($request->lname),
-            'ar_lname' => $request->ar_lname,
-            'bday' => $request->bday,
-            'bplace' => $request->bplace,
-        ]);
 
         return redirect()->route('students.index');
     }

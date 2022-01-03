@@ -12,14 +12,9 @@ use App\Http\Controllers\YearController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------
 | Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
+|-------------------------------------
 */
 
 Route::get('/', function () {
@@ -32,12 +27,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
+Route::resource('clients', ClientController::class);
+Route::resource('students', StudentController::class);
+
 Route::resource('cycles', CycleController::class);
 Route::resource('class_types', ClassTypeController::class);
 Route::resource('establishment_classes', EstablishmentClassController::class);
 Route::resource('establishments', EstablishmentController::class);
 Route::resource('years', YearController::class);
 Route::resource('year_classes', YearClassController::class);
-Route::resource('clients', ClientController::class);
-Route::resource('students', StudentController::class);
 Route::resource('student_registrations', StudentRegistrationController::class);
