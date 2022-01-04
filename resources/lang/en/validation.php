@@ -159,8 +159,10 @@ return [
         'lname' => 'last name',
         'ar_lname' => 'arabic last name',
         'email' => 'E-mail adress',
+        'phone' => 'phone number',
         'bday' => 'birthday date',
         'bplace' => 'birth place',
+        'profession' => 'profession',
     ],
 
 ];

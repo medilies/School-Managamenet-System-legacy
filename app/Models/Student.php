@@ -9,15 +9,15 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'fname',
-        'ar_fname',
-        'lname',
-        'ar_lname',
-        'bday',
-        'bplace',
+    protected $guarded = [
+        'id',
     ];
 
+    /*
+    |-------------------------------------
+    | Relationships
+    |-------------------------------------
+    */
     public function studentRegistrations()
     {
         return $this->hasMany(StudentRegistration::class);
@@ -34,5 +34,40 @@ class Student extends Model
             // ->as('relationship')
             ->withPivot(['rel'])
             ->withTimestamps();
+    }
+
+    /*
+    |-------------------------------------
+    | Mutators
+    |-------------------------------------
+    */
+    public function setFnameAttribute($value)
+    {
+        $this->attributes['fname'] = ucwords(strtolower($value));
+    }
+
+    public function setLnameAttribute($value)
+    {
+        $this->attributes['lname'] = strtoupper($value);
+    }
+
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
+
+    /*
+    |-------------------------------------
+    | Accessors
+    |-------------------------------------
+    */
+    public function getFullNameAttribute()
+    {
+        return "{$this->fname} {$this->lname}";
+    }
+
+    public function getArabicFullNameAttribute()
+    {
+        return "{$this->ar_fname} {$this->ar_lname}";
     }
 }

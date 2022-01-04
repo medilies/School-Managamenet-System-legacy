@@ -10,12 +10,15 @@ use App\Http\Controllers\StudentRegistrationController;
 use App\Http\Controllers\YearClassController;
 use App\Http\Controllers\YearController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 
 /*
 |-------------------------------------
 | Web Routes
 |-------------------------------------
 */
+
+App::setLocale('fr');
 
 Route::get('/', function () {
     return view('welcome');

@@ -60,10 +60,10 @@
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
-                                                            {{ $client->fname }} {{ $client->lname }}
+                                                            {{ $client->full_name }}
                                                         </div>
                                                         <div class="text-sm text-gray-500">
-                                                            {{ $client->ar_fname }} {{ $client->ar_lname }}
+                                                            {{ $client->arabic_full_name }}
                                                         </div>
                                                     </div>
                                                 </div>
