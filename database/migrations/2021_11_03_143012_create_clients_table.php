@@ -24,7 +24,7 @@ class CreateClientsTable extends Migration
             //
             $table->string('phone', 15);
             $table->string('email', 72)->nullable();
-            $table->string('address', 50)->nullable(); // state, city, zip, door ???
+            $table->string('address', 90)->nullable(); // state, city, zip, door ???
             //
             $table->timestamp('created_at')
                 ->useCurrent();

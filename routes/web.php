@@ -9,17 +9,17 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentRegistrationController;
 use App\Http\Controllers\YearClassController;
 use App\Http\Controllers\YearController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
+
+App::setLocale('fr');
 
 /*
 |-------------------------------------
 | Web Routes
 |-------------------------------------
 */
-
-App::setLocale('fr');
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,8 +28,18 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+/*
+|-------------------------------------
+| Auth Routes
+|-------------------------------------
+*/
 require __DIR__ . '/auth.php';
 
+/*
+|-------------------------------------
+| Ressource Routes
+|-------------------------------------
+*/
 Route::resource('clients', ClientController::class);
 Route::resource('students', StudentController::class);
 

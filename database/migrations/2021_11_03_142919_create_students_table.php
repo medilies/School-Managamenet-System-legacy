@@ -22,10 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('ar_lname', 50);
             $table->date('bday');
             $table->string('bplace', 20); // comparison list ?
-            //
-            // $table->string('phone', 15);
-            // $table->string('email', 72);
-            // $table->string('address', 50); // state, city, zip, door ???
+            $table->string('email', 72)->nullable();
             //
             $table->timestamp('created_at')
                 ->useCurrent();
