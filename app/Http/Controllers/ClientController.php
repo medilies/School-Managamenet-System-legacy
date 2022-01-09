@@ -48,7 +48,7 @@ class ClientController extends Controller
                     'lname' => ['required',],
                     'ar_lname' => ['',],
                     'profession' => ['required',],
-                    'phone' => ['numeric', 'required'],
+                    'phone' => ['required'],
                     'email' => ['email',],
                     'address' => ['',],
                 ]

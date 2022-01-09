@@ -19,18 +19,14 @@ class CreateClientsTable extends Migration
             $table->string('fname', 50);
             $table->string('ar_fname', 50)->nullable();
             $table->string('lname', 50);
-            $table->string('ar_lname', 50)->nullable();
-            $table->string('profession', 20);
-            //
-            $table->string('phone', 15);
-            $table->string('email', 72)->nullable();
+            $table->string('phone', 15)->unique();
+            $table->string('email', 72)->nullable()->unique();
             $table->string('address', 90)->nullable(); // state, city, zip, door ???
+            $table->string('profession', 32);
+            $table->string('family_title', 32)->nullable(); // NOT NULLABLE
             //
-            $table->timestamp('created_at')
-                ->useCurrent();
-            $table->timestamp('updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

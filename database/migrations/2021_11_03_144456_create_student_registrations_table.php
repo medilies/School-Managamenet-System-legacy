@@ -18,11 +18,8 @@ class CreateStudentRegistrationsTable extends Migration
             $table->set("validation", ["pending", "accepted", "refused"])->default("pending");
             $table->boolean('paid')->default(0);
             //
-            $table->timestamp('sub_at')
-                ->useCurrent();
-            $table->timestamp('sub_updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('sub_at')->useCurrent();
+            $table->timestamp('sub_updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->foreignId('student_id')->constrained();
             $table->foreignId('year_class_id')->constrained();

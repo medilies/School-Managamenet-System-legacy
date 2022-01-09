@@ -16,11 +16,8 @@ class CreateCyclesTable extends Migration
         Schema::create('cycles', function (Blueprint $table) {
             $table->string('cycle', 20);
             //
-            $table->timestamp('created_at')
-                ->useCurrent();
-            $table->timestamp('updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->primary('cycle');
         });

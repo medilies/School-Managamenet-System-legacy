@@ -17,18 +17,15 @@ class CreateStudentsTable extends Migration
             $table->id();
             //
             $table->string('fname', 50);
-            $table->string('ar_fname', 50);
+            $table->string('ar_fname', 50)->nullable();
             $table->string('lname', 50);
-            $table->string('ar_lname', 50);
+            $table->string('ar_lname', 50)->nullable();
             $table->date('bday');
             $table->string('bplace', 20); // comparison list ?
             $table->string('email', 72)->nullable();
             //
-            $table->timestamp('created_at')
-                ->useCurrent();
-            $table->timestamp('updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->unique(['fname', 'lname', 'bday']);
         });

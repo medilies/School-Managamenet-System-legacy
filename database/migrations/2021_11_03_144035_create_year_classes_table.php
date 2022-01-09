@@ -20,11 +20,8 @@ class CreateYearClassesTable extends Migration
             $table->boolean('active')->default(false);
             $table->unsignedSmallInteger('capacity')->default(0);
             //
-            $table->timestamp('created_at')
-                ->useCurrent();
-            $table->timestamp('updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->foreign('year')
                 ->references('year')->on('years');

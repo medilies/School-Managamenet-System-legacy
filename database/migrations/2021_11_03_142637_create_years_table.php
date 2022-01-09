@@ -16,11 +16,8 @@ class CreateYearsTable extends Migration
         Schema::create('years', function (Blueprint $table) {
             $table->year('year');
             //
-            $table->timestamp('created_at')
-                ->useCurrent();
-            $table->timestamp('updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->primary('year');
         });
