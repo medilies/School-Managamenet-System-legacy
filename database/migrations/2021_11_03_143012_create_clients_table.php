@@ -17,7 +17,6 @@ class CreateClientsTable extends Migration
             $table->id();
             //
             $table->string('fname', 50);
-            $table->string('ar_fname', 50)->nullable();
             $table->string('lname', 50);
             $table->string('phone', 15)->unique();
             $table->string('email', 72)->nullable()->unique();
@@ -27,6 +26,8 @@ class CreateClientsTable extends Migration
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            //
+            $table->foreignId('family_id')->nullable()->constrained();
         });
     }
 

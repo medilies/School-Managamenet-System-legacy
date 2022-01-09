@@ -18,17 +18,16 @@ class Client extends Model
     | Relationships
     |-------------------------------------
     */
-    public function parentalLinks()
+    public function family()
     {
-        return $this->hasMany(ParentalLink::class);
+        return $this->belongsTo(Family::class);
     }
 
     public function students()
     {
-        return $this->belongsToMany(Student::class, 'parental_links')
-            ->withPivot(['rel'])
-            ->withTimestamps();
+        return $this->hasManyThrough(Student::class, Family::class, 'id', 'family_id', 'family_id', 'id');
     }
+    // App\Models\Client::find(1)->family->with(['students'])->get()
 
     /*
     |-------------------------------------

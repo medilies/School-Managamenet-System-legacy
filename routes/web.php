@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\EstablishmentClassController;
 use App\Http\Controllers\EstablishmentController;
+use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentRegistrationController;
 use App\Http\Controllers\YearClassController;
@@ -42,6 +43,7 @@ require __DIR__ . '/auth.php';
 */
 Route::resource('clients', ClientController::class);
 Route::resource('students', StudentController::class);
+Route::resource('families', FamilyController::class);
 
 Route::resource('cycles', CycleController::class);
 Route::resource('class_types', ClassTypeController::class);

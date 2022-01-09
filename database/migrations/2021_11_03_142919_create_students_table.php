@@ -27,6 +27,8 @@ class CreateStudentsTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
+            $table->foreignId('family_id')->nullable()->constrained();
+            //
             $table->unique(['fname', 'lname', 'bday']);
         });
     }

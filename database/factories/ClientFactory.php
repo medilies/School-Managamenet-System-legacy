@@ -20,12 +20,10 @@ class ClientFactory extends Factory
 
         return [
             'fname' => $this->faker->firstName(),
-            'ar_fname' => $faker->firstName(),
             'lname' => $this->faker->name(),
-            'ar_lname' => $faker->name(),
             'profession' => $this->faker->sentence(1, false),
-            'phone' => $this->faker->regexify('09[0-9]{8}'),
-            'email' => $this->faker->email(),
+            'phone' => $this->faker->unique()->regexify('08[0-9]{8}'),
+            'email' => $this->faker->unique()->safeEmail(),
             'address' => $this->faker->sentence(5, false),
         ];
     }
