@@ -18,11 +18,8 @@ class CreateClassTypesTable extends Migration
             $table->string('name', 50);
             $table->string('cycle', 20);
             //
-            $table->timestamp('created_at')
-                ->useCurrent();
-            $table->timestamp('updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->foreign('cycle')
                 ->references('cycle')->on('cycles');

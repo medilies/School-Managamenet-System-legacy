@@ -18,22 +18,21 @@ class Student extends Model
     | Relationships
     |-------------------------------------
     */
-    public function studentRegistrations()
+    public function family()
     {
-        return $this->hasMany(StudentRegistration::class);
-    }
-
-    public function parentalLinks()
-    {
-        return $this->hasMany(ParentalLink::class);
+        return $this->belongsTo(Family::class);
     }
 
     public function clients()
     {
-        return $this->belongsToMany(Client::class, 'parental_links')
-            // ->as('relationship')
-            ->withPivot(['rel'])
-            ->withTimestamps();
+        return $this->hasManyThrough(Client::class, Family::class, 'id', 'family_id', 'family_id', 'id');
+    }
+    // App\Models\Student::find(1)->clients()->get()
+    // App\Models\Student::with(['clients', 'family'])->find(1)
+
+    public function studentRegistrations()
+    {
+        return $this->hasMany(StudentRegistration::class);
     }
 
     /*

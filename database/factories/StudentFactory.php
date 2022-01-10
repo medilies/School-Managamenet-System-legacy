@@ -22,7 +22,7 @@ class StudentFactory extends Factory
             'ar_fname' => $faker->firstName(),
             'lname' => $this->faker->name(),
             'ar_lname' => $faker->name(),
-            'bday' => $this->faker->dateTime('2004-12-1'),
+            'bday' => $this->faker->dateTimeBetween('-18 years', '-5 years'),
             'bplace' => $this->faker->sentence(1, false),
         ];
     }

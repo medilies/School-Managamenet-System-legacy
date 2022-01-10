@@ -16,11 +16,8 @@ class CreateEstablishmentsTable extends Migration
         Schema::create('establishments', function (Blueprint $table) {
             $table->string('establishment', 20);
             //
-            $table->timestamp('created_at')
-                ->useCurrent();
-            $table->timestamp('updated_at')
-                ->useCurrent()
-                ->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->primary('establishment');
         });
