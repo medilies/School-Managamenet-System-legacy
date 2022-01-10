@@ -35,66 +35,7 @@ class FamilyController extends Controller
      */
     public function store(Request $request)
     {
-        $step1_data = session('family-create-step1');
-        $step2_data = session('family-create-step2');
-
-        if (
-            empty($step1_data) &&
-            empty($step2_data)
-        ) {
-
-            session(
-                [
-                    'family-create-step1' =>
-                    $request->validate(
-                        [
-                            'fname' => ['required',],
-                            'lname' => ['required',],
-                            'profession' => ['required',],
-                            'phone' => ['required'],
-                            'email' => ['email',],
-                            'address' => ['',],
-                        ]
-                    )
-                ]
-            );
-
-            return redirect()->route('families.create');
-            //
-        } else if (
-            !empty($step1_data) &&
-            empty($step2_data)
-        ) {
-            //
-            session(
-                [
-                    'family-create-step2' =>
-                    $request->validate(
-                        [
-                            'fname' => ['required',],
-                            'lname' => ['required',],
-                            'profession' => ['required',],
-                            'phone' => ['required'],
-                            'email' => ['email',],
-                            'address' => ['',],
-                        ]
-                    )
-                ]
-            );
-            //
-        } else if (
-            empty($step1_data) &&
-            !empty($step2_data)
-        ) {
-            session()->forget(['family-create-step1', 'family-create-step2']);
-            echo '<br>' .  "SYSTEM ERROR => step 2 filled while step 1 is empty";
-        }
         //
-        else {
-            echo '<br>' .  "All good";
-        }
-
-        echo '<br>' .  "WHAT WHAAAAT";
     }
 
     /**
