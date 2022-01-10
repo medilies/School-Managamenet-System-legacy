@@ -24,17 +24,6 @@ class FamilyController extends Controller
      */
     public function create()
     {
-
-        // session()->forget(['family-create-step1', 'family-create-step2']);
-
-        // session()->flush();
-        // session()->regenerate();
-
-        // session(['family-create-step1' => NULL]);
-        // session(['family-create-step2' => NULL]);
-
-        // dd(session()->all());
-
         return view('families.create');
     }
 
@@ -48,8 +37,6 @@ class FamilyController extends Controller
     {
         $step1_data = session('family-create-step1');
         $step2_data = session('family-create-step2');
-
-        // session()->flush();
 
         if (
             empty($step1_data) &&
@@ -95,11 +82,19 @@ class FamilyController extends Controller
                 ]
             );
             //
-        } else {
-            echo 'meh';
-            dd(session()->all());
+        } else if (
+            empty($step1_data) &&
+            !empty($step2_data)
+        ) {
+            session()->forget(['family-create-step1', 'family-create-step2']);
+            echo '<br>' .  "SYSTEM ERROR => step 2 filled while step 1 is empty";
         }
-        dd(session()->all());
+        //
+        else {
+            echo '<br>' .  "All good";
+        }
+
+        echo '<br>' .  "WHAT WHAAAAT";
     }
 
     /**
