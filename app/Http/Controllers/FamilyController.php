@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Family;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class FamilyController extends Controller
@@ -35,7 +36,10 @@ class FamilyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client_validated_data = Client::validate($request);
+
+        $family = Family::create();
+        $client = $family->clients()->create($client_validated_data);
     }
 
     /**

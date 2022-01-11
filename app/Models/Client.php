@@ -63,4 +63,26 @@ class Client extends Model
     {
         return "{$this->ar_fname} {$this->ar_lname}";
     }
+
+    /*
+    |-------------------------------------
+    | Validation
+    |-------------------------------------
+    */
+    public static function validate($request_reference_object)
+    {
+        return $request_reference_object->validate(
+            [
+                'fname' => ['required',],
+                'ar_fname' => ['',],
+                'lname' => ['required',],
+                'ar_lname' => ['',],
+                'profession' => ['required',],
+                'phone' => ['required'],
+                'email' => ['email',],
+                'address' => ['',],
+                'family_title' => ['',],
+            ]
+        );
+    }
 }
