@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Family;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -39,21 +40,24 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $student_validated_data = Student::validate($request);
 
-        Student::create(
-            $request->validate(
-                [
-                    'fname' => ['required',],
-                    'ar_fname' => ['required',],
-                    'lname' => ['required',],
-                    'ar_lname' => ['required',],
-                    'bday' => ['required', 'date'],
-                    'bplace' => ['required',],
-                ]
-            )
-        );
+        Student::create($student_validated_data);
 
         return redirect()->route('students.index');
+    }
+
+
+    /**
+     *
+     */
+    public function store2Family(Request $request, Family $family)
+    {
+        $student_validated_data = Student::validate($request);
+
+        $family->students()->create($student_validated_data);
+
+        return redirect()->route('families.show', ['family' => $family->id]);
     }
 
     /**

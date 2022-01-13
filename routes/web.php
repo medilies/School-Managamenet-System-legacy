@@ -42,7 +42,10 @@ require __DIR__ . '/auth.php';
 |-------------------------------------
 */
 Route::resource('clients', ClientController::class);
+
 Route::resource('students', StudentController::class);
+Route::post('/students/store/family/{family}', [StudentController::class, 'store2Family'])->name('families.students.store');
+
 Route::resource('families', FamilyController::class);
 
 Route::resource('cycles', CycleController::class);

@@ -39,7 +39,7 @@ class FamilyController extends Controller
         $client_validated_data = Client::validate($request);
 
         $family = Family::create();
-        $client = $family->clients()->create($client_validated_data);
+        $family->clients()->create($client_validated_data);
 
         return redirect()->route('families.show', ['family' => $family->id]);
     }
@@ -58,8 +58,6 @@ class FamilyController extends Controller
         $mother = $clients->where('family_title', 'mother')->first();
 
         $students = $family->students()->get();
-
-        // dd($father, $mother, $students);
 
         return view('families.show')
             ->with('family_id', $family->id)
