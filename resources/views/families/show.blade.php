@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('La famille') }}
+            {{ __('La famille') . ' ' . $father->lname }}
         </h2>
     </x-slot>
 
@@ -34,14 +34,9 @@
 
                     @else
 
-                        <div>
-                            <div class="p-2"> Nom: {{ $father->fname }} </div>
-                            <div class="p-2"> Prenom: {{ $father->lname }} </div>
-                            <div class="p-2"> Profession: {{ $father->profession }} </div>
-                            <div class="p-2"> Email: {{ $father->email }} </div>
-                            <div class="p-2"> Téléphone: {{ $father->phone }} </div>
-                            <div class="p-2"> Addresse: {{ $father->address }} </div>
-                        </div>
+                        @component('components.cards.client1', ['client_data' => $father])
+                            <x-slot name="card_heading"> le père </x-slot>
+                        @endcomponent
 
                     @endif
 
@@ -73,14 +68,10 @@
 
                     @else
 
-                        <div>
-                            <div class="p-2"> Nom: {{ $mother->fname }} </div>
-                            <div class="p-2"> Prenom: {{ $mother->lname }} </div>
-                            <div class="p-2"> Profession: {{ $mother->profession }} </div>
-                            <div class="p-2"> Email: {{ $mother->email }} </div>
-                            <div class="p-2"> Téléphone: {{ $mother->phone }} </div>
-                            <div class="p-2"> Addresse: {{ $mother->address }} </div>
-                        </div>
+                        @component('components.cards.client1', ['client_data' => $mother])
+                            <x-slot name="card_heading"> la mère </x-slot>
+                        @endcomponent
+
                     @endif
 
                 </div>
