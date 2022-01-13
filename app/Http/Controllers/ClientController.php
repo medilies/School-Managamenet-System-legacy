@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Family;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -40,22 +41,24 @@ class ClientController extends Controller
     public function store(Request $request)
     {
 
-        Client::create(
-            $request->validate(
-                [
-                    'fname' => ['required',],
-                    'ar_fname' => ['',],
-                    'lname' => ['required',],
-                    'ar_lname' => ['',],
-                    'profession' => ['required',],
-                    'phone' => ['required'],
-                    'email' => ['email',],
-                    'address' => ['',],
-                ]
-            )
-        );
+        $client_validated_data = Client::validate($request);
+
+        Client::create($client_validated_data);
 
         return redirect()->route('clients.index');
+    }
+
+    /**
+     *
+     */
+    public function store2Family(Request $request, Family $family)
+    {
+
+        $client_validated_data = Client::validate($request);
+
+        $family->clients()->create($client_validated_data);
+
+        return redirect()->route('families.show', ['family' => $family->id]);
     }
 
     /**

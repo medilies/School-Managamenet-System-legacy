@@ -21,7 +21,8 @@
 
                         <div class="p-6 bg-white border-b border-gray-200 flex ">
 
-                            <form action={{ route('clients.store') }} method="post" class="w-full border-2 p-4">
+                            <form action={{ route('families.clients.store', ['family' => $family_id]) }} method="post"
+                                class="w-full border-2 p-4">
 
                                 @csrf
                                 <input type="hidden" name="family_title" value="father">
@@ -56,7 +57,8 @@
 
                         <div class="p-6 bg-white border-b border-gray-200 flex ">
 
-                            <form action={{ route('clients.store') }} method="post" class="w-full  border-2 p-4 ">
+                            <form action={{ route('families.clients.store', ['family' => $family_id]) }} method="post"
+                                class="w-full  border-2 p-4 ">
 
                                 @csrf
                                 <input type="hidden" name="family_title" value="mother">
