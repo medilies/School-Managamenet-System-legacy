@@ -27,7 +27,8 @@ class CreateClientsTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->foreignId('family_id')->nullable()->constrained();
+            $table->foreignId('family_id')->nullable()->constrained(); // NOT NULLABLE
+            $table->unique('family_id', 'family_title');
         });
     }
 
