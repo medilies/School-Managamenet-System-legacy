@@ -13,9 +13,9 @@ class Student1 extends Component
      *
      * @return void
      */
-    public function __construct($student_data)
+    public function __construct($studentData)
     {
-        $this->student_data = $student_data;
+        $this->student_data = $studentData;
     }
 
     /**

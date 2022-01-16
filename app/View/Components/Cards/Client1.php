@@ -15,9 +15,9 @@ class Client1 extends Component
      *
      * @return void
      */
-    public function __construct($client_data)
+    public function __construct($clientData)
     {
-        $this->client_data = $client_data;
+        $this->client_data = $clientData;
     }
 
     /**

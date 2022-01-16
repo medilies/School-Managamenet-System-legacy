@@ -12,15 +12,13 @@ use App\Http\Controllers\YearClassController;
 use App\Http\Controllers\YearController;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
-
-App::setLocale('fr');
 
 /*
 |-------------------------------------
 | Web Routes
 |-------------------------------------
 */
+
 Route::get('/', function () {
     return view('welcome');
 });

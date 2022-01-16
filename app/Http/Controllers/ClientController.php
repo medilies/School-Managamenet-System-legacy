@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClientRequest;
 use App\Models\Client;
 use App\Models\Family;
 use Illuminate\Http\Request;
@@ -38,10 +39,10 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClientRequest $request)
     {
 
-        $client_validated_data = Client::validate($request);
+        $client_validated_data = $request->validated();
 
         Client::create($client_validated_data);
 
@@ -51,14 +52,14 @@ class ClientController extends Controller
     /**
      *
      */
-    public function store2Family(Request $request, Family $family)
+    public function store2Family(StoreClientRequest $request, Family $family)
     {
 
-        $client_validated_data = Client::validate($request);
+        $client_validated_data = $request->validated();
 
         $family->clients()->create($client_validated_data);
 
-        return redirect()->route('families.show', ['family' => $family->id]);
+        return back();
     }
 
     /**

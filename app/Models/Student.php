@@ -69,23 +69,4 @@ class Student extends Model
     {
         return "{$this->ar_fname} {$this->ar_lname}";
     }
-
-    /*
-    |-------------------------------------
-    | Validation
-    |-------------------------------------
-    */
-    public static function validate($request_reference_object)
-    {
-        return $request_reference_object->validate(
-            [
-                'fname' => ['required',],
-                'ar_fname' => ['required',],
-                'lname' => ['required',],
-                'ar_lname' => ['required',],
-                'bday' => ['required', 'date'],
-                'bplace' => ['required',],
-            ]
-        );
-    }
 }
