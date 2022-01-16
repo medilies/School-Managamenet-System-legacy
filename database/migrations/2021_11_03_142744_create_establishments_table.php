@@ -14,12 +14,12 @@ class CreateEstablishmentsTable extends Migration
     public function up()
     {
         Schema::create('establishments', function (Blueprint $table) {
-            $table->string('establishment', 20);
+            $table->string('id', 30);
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->primary('establishment');
+            $table->primary('id');
         });
     }
 

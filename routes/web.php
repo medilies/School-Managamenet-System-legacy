@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ClassTypeController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CycleController;
@@ -49,8 +50,9 @@ Route::resource('families', FamilyController::class);
 
 Route::resource('cycles', CycleController::class);
 Route::resource('class_types', ClassTypeController::class);
-Route::resource('establishment_classes', EstablishmentClassController::class);
 Route::resource('establishments', EstablishmentController::class);
 Route::resource('years', YearController::class);
-Route::resource('year_classes', YearClassController::class);
+
+Route::resource('classrooms', ClassroomController::class);
+
 Route::resource('student_registrations', StudentRegistrationController::class);

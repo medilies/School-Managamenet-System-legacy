@@ -14,12 +14,12 @@ class CreateCyclesTable extends Migration
     public function up()
     {
         Schema::create('cycles', function (Blueprint $table) {
-            $table->string('cycle', 20);
+            $table->string('id', 20);
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->primary('cycle');
+            $table->primary('id');
         });
     }
 

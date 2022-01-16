@@ -9,22 +9,25 @@ class ClassType extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name'
-    ];
+    protected $guarded = [];
 
+    /*
+    |-------------------------------------
+    | Relationships
+    |-------------------------------------
+    */
     public function cycle()
     {
-        return $this->belongsTo(Cycle::class, 'cycle', 'cycle');
+        return $this->belongsTo(Cycle::class);
     }
 
-    public function establishmentClasses()
+    public function classrooms()
     {
-        return $this->hasMany(EstablishmentClass::class);
+        return $this->hasMany(Classroom::class);
     }
 
-    public function yearClasses()
+    public function studentRegistrations()
     {
-        return $this->hasManyThrough(YearClass::class, EstablishmentClass::class);
+        return $this->hasManyThrough(StudentRegistration::class, Classroom::class);
     }
 }

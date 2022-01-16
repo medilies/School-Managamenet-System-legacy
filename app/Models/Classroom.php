@@ -5,12 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Year extends Model
+class Classroom extends Model
 {
     use HasFactory;
-
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     protected $guarded = [];
 
@@ -19,13 +16,23 @@ class Year extends Model
     | Relationships
     |-------------------------------------
     */
-    public function classrooms()
+    public function establishment()
     {
-        return $this->hasMany(Classroom::class);
+        return $this->belongsTo(Establishment::class);
+    }
+
+    public function year()
+    {
+        return $this->belongsTo(Year::class);
+    }
+
+    public function classType()
+    {
+        return $this->belongsTo(ClassType::class);
     }
 
     public function studentRegistrations()
     {
-        return $this->hasManyThrough(StudentRegistration::class, Classroom::class);
+        return $this->hasMany(StudentRegistration::class);
     }
 }
