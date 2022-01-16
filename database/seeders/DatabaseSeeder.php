@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             [
                 EducSystem::class,
                 EstablishmentExample::class,
+                ClassroomsExample::class,
             ]
         );
     }
