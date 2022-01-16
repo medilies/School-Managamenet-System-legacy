@@ -10,10 +10,6 @@
         <x-slot name="label_text"> Nom </x-slot>
     </x-forms.input>
 
-    <x-forms.input type="text" name="address">
-        <x-slot name="label_text"> Adresse </x-slot>
-    </x-forms.input>
-
     <x-forms.input type="text" name="email">
         <x-slot name="label_text"> E-mail </x-slot>
     </x-forms.input>
@@ -22,7 +18,15 @@
         <x-slot name="label_text"> Téléphone </x-slot>
     </x-forms.input>
 
-    <x-forms.input type="phone" name="profession">
+    <x-forms.input type="text" name="cni" maxlength="20">
+        <x-slot name="label_text"> Numéro de la carte nationale </x-slot>
+    </x-forms.input>
+
+    <x-forms.input type="text" name="address">
+        <x-slot name="label_text"> Adresse </x-slot>
+    </x-forms.input>
+
+    <x-forms.input type="phone" name="profession" maxlength="32">
         <x-slot name="label_text"> Profession </x-slot>
     </x-forms.input>
 

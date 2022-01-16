@@ -19,8 +19,9 @@ class CreateClientsTable extends Migration
             $table->string('fname', 50);
             $table->string('lname', 50);
             $table->string('phone', 15)->unique();
-            $table->string('email', 72)->nullable()->unique();
-            $table->string('address', 90)->nullable(); // state, city, zip, door ???
+            $table->string('email', 72)->unique();
+            $table->string('cni', 20)->nullable()->unique();
+            $table->string('address', 90); // state, city, zip, door ???
             $table->string('profession', 32);
             $table->string('family_title', 32)->nullable(); // NOT NULLABLE
             //
@@ -28,7 +29,7 @@ class CreateClientsTable extends Migration
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->foreignId('family_id')->nullable()->constrained(); // NOT NULLABLE
-            $table->unique('family_id', 'family_title');
+            $table->unique(['family_id', 'family_title']);
         });
     }
 

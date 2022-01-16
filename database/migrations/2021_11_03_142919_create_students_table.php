@@ -21,8 +21,8 @@ class CreateStudentsTable extends Migration
             $table->string('lname', 50);
             $table->string('ar_lname', 50)->nullable();
             $table->date('bday');
-            $table->string('bplace', 20); // comparison list ?
-            $table->string('email', 72)->nullable();
+            $table->string('bplace', 32); // comparison list ?
+            $table->string('email', 72)->nullable()->unique();
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
