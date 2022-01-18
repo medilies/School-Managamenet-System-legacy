@@ -9,16 +9,20 @@ class StudentRegistration extends Model
 {
     use HasFactory;
 
-    const CREATED_AT = 'sub_at';
-    const UPDATED_AT = 'sub_updated_at';
+    protected $guarded = [];
 
+    /*
+    |-------------------------------------
+    | Relationships
+    |-------------------------------------
+    */
     public function student()
     {
         return $this->belongsTo(Student::class);
     }
 
-    public function yearClass()
+    public function classroom()
     {
-        return $this->belongsTo(YearClass::class);
+        return $this->belongsTo(Classroom::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParentalLinksTable extends Migration
+class CreateStudentRegistrationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,19 @@ class CreateParentalLinksTable extends Migration
      */
     public function up()
     {
-        Schema::create('parental_links', function (Blueprint $table) {
-            $table->string('rel', 15);
+        Schema::create('student_registrations', function (Blueprint $table) {
+            $table->id();
+            $table->set("validation", ["pending", "accepted", "refused"])->default("pending");
+            $table->boolean('paid1')->default(0);
+            $table->boolean('paid2')->default(0);
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->foreignId('client_id')->constrained();
             $table->foreignId('student_id')->constrained();
+            $table->foreignId('classroom_id')->constrained();
+            //
+            $table->unique(['student_id', 'classroom_id']);
         });
     }
 
@@ -31,6 +36,6 @@ class CreateParentalLinksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parental_links');
+        Schema::dropIfExists('student_registrations');
     }
 }

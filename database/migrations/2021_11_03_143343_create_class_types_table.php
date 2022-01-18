@@ -16,13 +16,14 @@ class CreateClassTypesTable extends Migration
         Schema::create('class_types', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->string('cycle', 20);
+            $table->string('cycle_id', 20);
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->foreign('cycle')
-                ->references('cycle')->on('cycles');
+            $table->foreign('cycle_id')
+                ->references('id')->on('cycles')
+                ->onUpdate('cascade');
         });
     }
 

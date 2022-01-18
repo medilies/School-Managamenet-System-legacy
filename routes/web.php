@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ClassTypeController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CycleController;
@@ -39,18 +40,19 @@ require __DIR__ . '/auth.php';
 | Ressource Routes
 |-------------------------------------
 */
-Route::resource('clients', ClientController::class);
-Route::post('/clients/store/family/{family}', [ClientController::class, 'store2Family'])->name('families.clients.store');
+Route::resource('clients', ClientController::class)->middleware(['auth']);
+Route::post('/clients/store/family/{family}', [ClientController::class, 'store2Family'])->name('families.clients.store')->middleware(['auth']);
 
-Route::resource('students', StudentController::class);
-Route::post('/students/store/family/{family}', [StudentController::class, 'store2Family'])->name('families.students.store');
+Route::resource('students', StudentController::class)->middleware(['auth']);
+Route::post('/students/store/family/{family}', [StudentController::class, 'store2Family'])->name('families.students.store')->middleware(['auth']);
 
-Route::resource('families', FamilyController::class);
+Route::resource('families', FamilyController::class)->middleware(['auth']);
 
-Route::resource('cycles', CycleController::class);
-Route::resource('class_types', ClassTypeController::class);
-Route::resource('establishment_classes', EstablishmentClassController::class);
-Route::resource('establishments', EstablishmentController::class);
-Route::resource('years', YearController::class);
-Route::resource('year_classes', YearClassController::class);
-Route::resource('student_registrations', StudentRegistrationController::class);
+Route::resource('cycles', CycleController::class)->middleware(['auth']);
+Route::resource('class_types', ClassTypeController::class)->middleware(['auth']);
+Route::resource('establishments', EstablishmentController::class)->middleware(['auth']);
+Route::resource('years', YearController::class)->middleware(['auth']);
+
+Route::resource('classrooms', ClassroomController::class)->middleware(['auth']);
+
+Route::resource('student_registrations', StudentRegistrationController::class)->middleware(['auth']);

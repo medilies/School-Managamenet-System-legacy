@@ -9,17 +9,18 @@ class Cycle extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'cycle';
     public $incrementing = false;
     protected $keyType = 'string';
 
+    protected $guarded = [];
+
+    /*
+    |-------------------------------------
+    | Relationships
+    |-------------------------------------
+    */
     public function classTypes()
     {
-        return $this->hasMany(ClassType::class, 'cycle', 'cycle');
-    }
-
-    public function establishmentClasses()
-    {
-        return $this->hasManyThrough(EstablishmentClass::class, ClassType::class, 'cycle');
+        return $this->hasMany(ClassType::class);
     }
 }

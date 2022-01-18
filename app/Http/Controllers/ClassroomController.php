@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EstablishmentClass;
-use Illuminate\Http\Request;
+use App\Models\Classroom;
+use App\Http\Requests\StoreClassroomRequest;
+use App\Http\Requests\UpdateClassroomRequest;
 
-class EstablishmentClassController extends Controller
+class ClassroomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class EstablishmentClassController extends Controller
      */
     public function index()
     {
-        return EstablishmentClass::all();
+        //
     }
 
     /**
@@ -30,10 +31,10 @@ class EstablishmentClassController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreClassroomRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreClassroomRequest $request)
     {
         //
     }
@@ -41,21 +42,21 @@ class EstablishmentClassController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EstablishmentClass  $establishmentClass
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function show(EstablishmentClass $establishmentClass)
+    public function show(Classroom $classroom)
     {
-        return $establishmentClass;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\EstablishmentClass  $establishmentClass
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function edit(EstablishmentClass $establishmentClass)
+    public function edit(Classroom $classroom)
     {
         //
     }
@@ -63,11 +64,11 @@ class EstablishmentClassController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\EstablishmentClass  $establishmentClass
+     * @param  \App\Http\Requests\UpdateClassroomRequest  $request
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EstablishmentClass $establishmentClass)
+    public function update(UpdateClassroomRequest $request, Classroom $classroom)
     {
         //
     }
@@ -75,10 +76,10 @@ class EstablishmentClassController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EstablishmentClass  $establishmentClass
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EstablishmentClass $establishmentClass)
+    public function destroy(Classroom $classroom)
     {
         //
     }

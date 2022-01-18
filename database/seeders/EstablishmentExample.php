@@ -15,13 +15,13 @@ class EstablishmentExample extends Seeder
     public function run()
     {
         DB::table('years')->insert([
-            'year' => date("Y"),
+            'id' => date("Y"),
         ]);
 
         DB::table('establishments')->insert([
-            ['establishment' => 'sabah'],
-            ['establishment' => 'maraval'],
-            ['establishment' => 'gambetta'],
+            ['id' => 'sabah'],
+            ['id' => 'maraval'],
+            ['id' => 'gambetta'],
         ]);
     }
 }

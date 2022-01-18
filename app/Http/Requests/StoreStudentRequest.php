@@ -24,12 +24,16 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'fname' => ['required',],
-            'ar_fname' => ['required',],
-            'lname' => ['required',],
-            'ar_lname' => ['required',],
+            'fname' => ['required', 'max:50',],
+            'ar_fname' => ['nullable', 'max:50',],
+            'lname' => ['required', 'max:50',],
+            'ar_lname' => ['nullable', 'max:50',],
             'bday' => ['required', 'date'],
-            'bplace' => ['required',],
+            'bplace' => ['required', 'max:32',],
+            'email' => ['nullable', 'email',],
+            'family_id' => ['nullable', 'integer',]
         ];
     }
+
+    // unique(['fname', 'lname', 'bday']);
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreClientRequest extends FormRequest
 {
@@ -24,13 +25,17 @@ class StoreClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'fname' => ['required',],
-            'lname' => ['required',],
-            'phone' => ['required'],
+            'fname' => ['required', 'max:50',],
+            'lname' => ['required', 'max:50',],
+            'phone' => ['required'], // REGEX
             'email' => ['required', 'email',],
-            'address' => ['required',],
-            'profession' => ['required',],
-            'family_title' => ['',],
+            'cni' => ['nullable', 'max:20',],
+            'address' => ['required', 'max:90',],
+            'profession' => ['required', 'max:32',],
+            'family_id' => ['nullable', 'integer',], // required_if:anotherfield,value,...
+            'family_title' => ['nullable', Rule::in(['father', 'mother']), 'max:32'], // required_if:anotherfield,value,...
         ];
+
+        // unique('family_id', 'family_title')
     }
 }

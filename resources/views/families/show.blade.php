@@ -99,7 +99,7 @@
 
                 @foreach ($students as $student)
 
-                    <div class="w-1/3">
+                    <div class="w-1/4">
                         <x-cards.student1 :student-data="$student">
                             <x-slot name="card_heading"> étudiant </x-slot>
                         </x-cards.student1>
@@ -107,7 +107,7 @@
 
                 @endforeach
 
-                <div class="w-2/3 p-6 bg-white border-b border-gray-200 flex ">
+                <div class="w-1/2 p-6 bg-white border-b border-gray-200 flex ">
 
                     <form action={{ route('families.students.store', ['family' => $family_id]) }} method="post"
                         class="w-full  border-2 p-4 ">
