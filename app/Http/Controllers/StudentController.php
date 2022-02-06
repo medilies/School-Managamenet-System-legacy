@@ -43,22 +43,17 @@ class StudentController extends Controller
     {
         $student_validated_data = $request->validated();
 
-        Student::create($student_validated_data);
+        if (isset($request->family_id)) {
 
-        return redirect()->route('students.index');
-    }
+            $family = Family::find($request->family_id);
+            $family->students()->create($student_validated_data);
+        } else {
 
-
-    /**
-     *
-     */
-    public function store2Family(StoreStudentRequest $request, Family $family)
-    {
-        $student_validated_data = $request->validated();
-
-        $family->students()->create($student_validated_data);
+            Student::create($student_validated_data);
+        }
 
         return back();
+        // return redirect()->route('students.index');
     }
 
     /**

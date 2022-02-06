@@ -44,22 +44,17 @@ class ClientController extends Controller
 
         $client_validated_data = $request->validated();
 
-        Client::create($client_validated_data);
+        if (isset($request->family_id)) {
 
-        return redirect()->route('clients.index');
-    }
+            $family = Family::find($request->family_id);
+            $family->clients()->create($client_validated_data);
+        } else {
 
-    /**
-     *
-     */
-    public function store2Family(StoreClientRequest $request, Family $family)
-    {
-
-        $client_validated_data = $request->validated();
-
-        $family->clients()->create($client_validated_data);
+            Client::create($client_validated_data);
+        }
 
         return back();
+        // return redirect()->route('clients.index');
     }
 
     /**

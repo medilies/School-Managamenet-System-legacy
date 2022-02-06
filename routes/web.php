@@ -40,12 +40,8 @@ require __DIR__ . '/auth.php';
 |-------------------------------------
 */
 Route::resource('clients', ClientController::class)->middleware(['auth']);
-Route::post('/clients/store/family/{family}', [ClientController::class, 'store2Family'])
-    ->name('families.clients.store')->middleware(['auth']);
 
 Route::resource('students', StudentController::class)->middleware(['auth']);
-Route::post('/students/store/family/{family}', [StudentController::class, 'store2Family'])
-    ->name('families.students.store')->middleware(['auth']);
 
 Route::resource('families', FamilyController::class)->middleware(['auth']);
 
