@@ -15,7 +15,7 @@ class CreateStudentRegistrationsTable extends Migration
     {
         Schema::create('student_registrations', function (Blueprint $table) {
             $table->id();
-            $table->set("validation", ["pending", "accepted", "refused"])->default("pending");
+            $table->set("validation", ["pending", "accepted", "refused"])->default("pending"); // suspended
             $table->boolean('paid1')->default(0);
             $table->boolean('paid2')->default(0);
             //

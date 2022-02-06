@@ -14,12 +14,16 @@ class CreateYearsTable extends Migration
     public function up()
     {
         Schema::create('years', function (Blueprint $table) {
-            $table->year('id');
+            $table->id();
+            $table->year('year');
+            $table->string('establishment_id', 30);
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->primary('id');
+            $table->foreign('establishment_id')
+                ->references('id')->on('establishments')
+                ->onUpdate('cascade');
         });
     }
 

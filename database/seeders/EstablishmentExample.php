@@ -14,10 +14,6 @@ class EstablishmentExample extends Seeder
      */
     public function run()
     {
-        DB::table('years')->insert([
-            'id' => date("Y"),
-        ]);
-
         DB::table('establishments')->insert([
             ['id' => 'sabah'],
             ['id' => 'maraval'],

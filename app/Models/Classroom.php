@@ -16,11 +16,6 @@ class Classroom extends Model
     | Relationships
     |-------------------------------------
     */
-    public function establishment()
-    {
-        return $this->belongsTo(Establishment::class);
-    }
-
     public function year()
     {
         return $this->belongsTo(Year::class);

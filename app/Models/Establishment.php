@@ -19,9 +19,14 @@ class Establishment extends Model
     | Relationships
     |-------------------------------------
     */
+    public function years()
+    {
+        return $this->hasMany(Year::class);
+    }
+
     public function classrooms()
     {
-        return $this->hasMany(Classroom::class);
+        return $this->hasManyThrough(Classroom::class, Year::class);
     }
 
     public function studentRegistrations()
