@@ -36,6 +36,7 @@ class StoreClientRequest extends FormRequest
             'family_title' => ['nullable', Rule::in(['father', 'mother']), 'max:32'], // required_if:anotherfield,value,...
         ];
 
+        // Manually count in DB
         // unique('family_id', 'family_title')
     }
 }

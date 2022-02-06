@@ -2,79 +2,79 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreYearRequest;
+use App\Models\Classroom;
+use App\Models\ClassType;
+use App\Models\Establishment;
 use App\Models\Year;
-use Illuminate\Http\Request;
 
 class YearController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return Year::all();
+        $years = Classroom::with('year')
+            ->groupBy('year_id')
+            ->get(['year_id'])
+            ->groupBy('year.year');
+
+        return view('years.index')
+            ->with('years', $years);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+
+        // get accessible and not filled with classrooms in this year establishments
+
+        return view('years.create')
+            ->with('establishments', Establishment::all());
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreYearRequest $request)
     {
-        //
+
+        extract($request->safe()->only(['year', 'establishment_id']));
+
+        $establishment = Establishment::find($establishment_id);
+
+        $createdYear = $establishment->years()->create(compact('year'));
+
+        $class_types = ClassType::all();
+
+        foreach ($class_types as $class_type) {
+
+            $createdYear->classrooms()->create(
+                [
+                    'class_type_id' => $class_type->id,
+                    'capacity' => 0,
+                ]
+            );
+        }
+
+        return redirect()->route('classrooms.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Year  $year
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Year $year)
-    {
-        return $year;
-    }
+    // /**
+    //  * @param  \App\Models\Year  $year
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function show(Year $year)
+    // {
+    //     //
+    // }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Year  $year
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Year $year)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Year  $year
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Year $year)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
      * @param  \App\Models\Year  $year
      * @return \Illuminate\Http\Response
      */
