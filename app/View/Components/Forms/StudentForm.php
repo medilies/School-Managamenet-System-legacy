@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class StudentForm extends Component
 {
+    public $active_classrooms;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($activeClassrooms)
     {
-        //
+        $this->active_classrooms = $activeClassrooms;
     }
 
     /**

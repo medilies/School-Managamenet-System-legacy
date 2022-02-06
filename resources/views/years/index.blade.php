@@ -18,8 +18,9 @@
                         <table class="border-2 m-4">
 
                             <tr>
-                                <td class="border p-1">Année</td>
-                                <td class="border p-1">établissement</td>
+                                <td class="border p-1"> Année </td>
+                                <td class="border p-1"> établissement </td>
+                                <td class="border p-1"> locked </td>
                                 <td class="border p-1"></td>
                             </tr>
 
@@ -28,6 +29,7 @@
                                 <tr>
                                     <td class="border p-1">{{ $establishment_year->year->year }}</td>
                                     <td class="border p-1">{{ $establishment_year->year->establishment_id }}</td>
+                                    <td class="border p-1">{{ $establishment_year->year->locked }}</td>
                                     <td class="border p-1">
 
                                         <a href="{{ route('years.show', ['year' => $establishment_year->year->id]) }}"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentRequest;
+use App\Models\Classroom;
 use App\Models\Family;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -11,45 +12,43 @@ class StudentController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $students_page = Student::orderBy('id', 'desc')->paginate(10);
-
         return view('students.index')
-            ->with('students', $students_page);
+            ->with('students', Student::orderBy('id', 'desc')->paginate(10));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('students.create');
+        return view('students.create')
+            ->with('active_classrooms', Classroom::activeClassrooms());
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreStudentRequest $request)
     {
+        $student = NULL;
         $student_validated_data = $request->validated();
 
         if (isset($request->family_id)) {
 
             $family = Family::find($request->family_id);
-            $family->students()->create($student_validated_data);
+            $student = $family->students()->create($student_validated_data);
         } else {
 
-            Student::create($student_validated_data);
+            $student = Student::create($student_validated_data);
+        }
+
+        if (isset($request->classroom)) {
+            $student->studentRegistrations()->create(["classroom_id" => $request->classroom]);
         }
 
         return back();
@@ -68,8 +67,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
@@ -79,8 +76,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
@@ -91,8 +86,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */

@@ -13,6 +13,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 flex ">
 
+                        {{-- FATHER --}}
                         <form action={{ route('families.store') }} method="post" class="w-full  border-2 p-4 ">
 
                             @csrf
@@ -34,6 +35,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200 flex ">
 
+                        {{-- MOTHER --}}
                         <form action={{ route('families.store') }} method="post" class="w-full  border-2 p-4 ">
 
                             @csrf

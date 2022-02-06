@@ -17,6 +17,7 @@ class CreateYearsTable extends Migration
             $table->id();
             $table->year('year');
             $table->string('establishment_id', 30);
+            $table->boolean('locked');
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

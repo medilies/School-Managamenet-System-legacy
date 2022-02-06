@@ -48,7 +48,10 @@ class YearController extends Controller
 
         $establishment = Establishment::find($establishment_id);
 
-        $createdYear = $establishment->years()->create(compact('year'));
+        if ($establishment->years()->where('locked', 0)->count())
+            return "This establishment already has an unlocked year";
+
+        $createdYear = $establishment->years()->create(['year' => $year, 'locked' => false]);
 
         $class_types = ClassType::all();
 

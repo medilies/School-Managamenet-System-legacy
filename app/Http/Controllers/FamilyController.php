@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreClientRequest;
+use App\Models\Classroom;
 use App\Models\Family;
 use Illuminate\Http\Request;
 
 class FamilyController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -19,8 +18,6 @@ class FamilyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -29,8 +26,6 @@ class FamilyController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -46,8 +41,6 @@ class FamilyController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param  \App\Models\Family  $family
      * @return \Illuminate\Http\Response
      */
@@ -55,21 +48,15 @@ class FamilyController extends Controller
     {
         $clients = $family->clients;
 
-        $father = $clients->where('family_title', 'father')->first();
-        $mother = $clients->where('family_title', 'mother')->first();
-
-        $students = $family->students;
-
         return view('families.show')
             ->with('family_id', $family->id)
-            ->with('father', $father)
-            ->with('mother', $mother)
-            ->with('students', $students);
+            ->with('father', $clients->where('family_title', 'father')->first())
+            ->with('mother', $clients->where('family_title', 'mother')->first())
+            ->with('students', $family->students)
+            ->with('active_classrooms', Classroom::activeClassrooms());
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param  \App\Models\Family  $family
      * @return \Illuminate\Http\Response
      */
@@ -79,8 +66,6 @@ class FamilyController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Family  $family
      * @return \Illuminate\Http\Response
@@ -91,8 +76,6 @@ class FamilyController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  \App\Models\Family  $family
      * @return \Illuminate\Http\Response
      */
