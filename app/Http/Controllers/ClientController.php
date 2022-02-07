@@ -24,16 +24,6 @@ class ClientController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('clients.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -42,16 +32,12 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
 
-        $client_validated_data = $request->validated();
+        if (!isset($request->family_id)) {
+            return response("Le client doit appartenir à une famille.", 401);
+        };
 
-        if (isset($request->family_id)) {
-
-            $family = Family::find($request->family_id);
-            $family->clients()->create($client_validated_data);
-        } else {
-
-            Client::create($client_validated_data);
-        }
+        $family = Family::find($request->family_id);
+        $family->clients()->create($request->validated());
 
         return back();
         // return redirect()->route('clients.index');

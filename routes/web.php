@@ -39,9 +39,9 @@ require __DIR__ . '/auth.php';
 | Ressource Routes
 |-------------------------------------
 */
-Route::resource('clients', ClientController::class)->middleware(['auth']);
+Route::resource('clients', ClientController::class)->except(['create'])->middleware(['auth']);
 
-Route::resource('students', StudentController::class)->middleware(['auth']);
+Route::resource('students', StudentController::class)->except(['create'])->middleware(['auth']);
 
 Route::resource('families', FamilyController::class)->middleware(['auth']);
 

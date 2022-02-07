@@ -21,34 +21,27 @@ class StudentController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('students.create')
-            ->with('active_classrooms', Classroom::activeClassrooms());
-    }
-
-    /**
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreStudentRequest $request)
     {
-        $student = NULL;
-        $student_validated_data = $request->validated();
 
-        if (isset($request->family_id)) {
+        if (!isset($request->family_id)) {
+            return response("L'étudiant doit appartenir à une famille.", 401);
+        };
 
-            $family = Family::find($request->family_id);
-            $student = $family->students()->create($student_validated_data);
-        } else {
-
-            $student = Student::create($student_validated_data);
-        }
+        $family = Family::findOrFail($request->family_id);
+        $student = $family->students()->create($request->validated());
 
         if (isset($request->classroom)) {
-            $student->studentRegistrations()->create(["classroom_id" => $request->classroom]);
+            $classroom = Classroom::with("year")->findOrFail($request->classroom);
+
+            if (!$classroom->capacity > 0 || $classroom->year->is_locked) {
+                throw new \Exception("La capacity de la classe doit etre superieur à 0 et l'année doit etre modifiable", 1);
+            }
+
+            $classroom->studentRegistrations()->create(["student_id" => $student->id]);
         }
 
         return back();
