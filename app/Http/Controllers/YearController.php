@@ -46,7 +46,7 @@ class YearController extends Controller
 
         extract($request->safe()->only(['year', 'establishment_id']));
 
-        $establishment = Establishment::find($establishment_id);
+        $establishment = Establishment::findOrFail($establishment_id);
 
         if ($establishment->years()->where('locked', 0)->count())
             return "This establishment already has an unlocked year";

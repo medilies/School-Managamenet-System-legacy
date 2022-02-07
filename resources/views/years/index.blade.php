@@ -39,7 +39,7 @@
                                         -
 
                                         {{-- equal to current working year condition to show --}}
-                                        <a href="{{ route('yearClassrooms.edit', ['year' => $establishment_year->year->id]) }}"
+                                        <a href="{{ route('classrooms_capacity.edit', ['year' => $establishment_year->year->id]) }}"
                                             class="text-indigo-600 hover:text-indigo-900">
                                             modifier </a>
 

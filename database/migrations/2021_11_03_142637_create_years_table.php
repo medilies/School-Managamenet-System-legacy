@@ -25,6 +25,8 @@ class CreateYearsTable extends Migration
             $table->foreign('establishment_id')
                 ->references('id')->on('establishments')
                 ->onUpdate('cascade');
+            //
+            $table->unique(['year', 'establishment_id']);
         });
     }
 

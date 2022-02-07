@@ -12,10 +12,11 @@
 
                     <h3> {{ $year->establishment_id }} {{ $year->year }} </h3>
 
-                    <form action={{ route('yearClassrooms.update', ['year' => $year->id]) }} method="post"
+                    <form action={{ route('classrooms_capacity.update', ['year' => $year->id]) }} method="post"
                         class="w-full  border-2 p-4 ">
 
                         @csrf
+                        <input type="hidden" name="first_classroom_id" value="{{ $classrooms->first()->id }}">
 
                         @foreach ($classrooms as $classroom)
 
