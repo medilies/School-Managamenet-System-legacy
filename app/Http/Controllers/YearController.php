@@ -68,14 +68,16 @@ class YearController extends Controller
         return redirect()->route('classrooms.index');
     }
 
-    // /**
-    //  * @param  \App\Models\Year  $year
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show(Year $year)
-    // {
-    //     //
-    // }
+    /**
+     * @param  \App\Models\Year  $year
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Year $year)
+    {
+        return view("years.show")
+            ->with('year', $year)
+            ->with('classrooms', $year->classrooms()->with(['year', 'classType'])->withCount(["studentRegistrations"])->get());
+    }
 
     /**
      * @param  \App\Models\Year  $year

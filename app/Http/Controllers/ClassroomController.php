@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use App\Http\Requests\UpdateClassroomRequest;
+use App\Models\Year;
 
 class ClassroomController extends Controller
 {
@@ -29,7 +30,10 @@ class ClassroomController extends Controller
      */
     public function show(Classroom $classroom)
     {
-        //
+        return view("classrooms.show")
+            ->with('classroom', $classroom)
+            ->with('registrations', $classroom->studentRegistrations()->with(["student"])->get())
+            ->with('year', Year::find($classroom->year_id));
     }
 
     /**

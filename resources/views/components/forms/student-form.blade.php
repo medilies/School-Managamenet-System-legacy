@@ -27,6 +27,7 @@
     </x-forms.input>
 
     <select name="classroom">
+        <option disabled selected value> -- Séléctionnez une classe -- </option>
 
         @foreach ($active_classrooms as $year => $establishments)
             @foreach ($establishments as $establishment => $classrooms)
