@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClassroomController;
-use App\Http\Controllers\ClassTypeController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\CycleController;
 use App\Http\Controllers\ClassroomsCapacityController;
 use App\Http\Controllers\EstablishmentController;
 use App\Http\Controllers\FamilyController;
@@ -21,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['auth'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -45,8 +43,6 @@ Route::resource('students', StudentController::class)->except(['create'])->middl
 
 Route::resource('families', FamilyController::class)->middleware(['auth']);
 
-Route::resource('cycles', CycleController::class)->middleware(['auth']);
-Route::resource('class_types', ClassTypeController::class)->middleware(['auth']);
 Route::resource('establishments', EstablishmentController::class)->middleware(['auth']);
 
 Route::resource('years', YearController::class)->middleware(['auth']);

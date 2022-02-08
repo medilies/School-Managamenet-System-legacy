@@ -1,9 +1,9 @@
 <x-app-layout>
+
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Etablisments') }}
-        </h2>
+        {{ __('Etablisments') }}
     </x-slot>
+
     <div class="flex justify-center mt-2">
         <div class="w-8/12 bg-white p-6 rounded-lg mt-1">
 
