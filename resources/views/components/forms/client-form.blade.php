@@ -1,4 +1,4 @@
-<div class="flex flex-wrap mx-2 mb-3 p-1 border">
+<div class="flex flex-wrap mx-2 mb-3 p-1">
 
     <h3 class="w-full"> {{ $form_heading }} </h3>
 

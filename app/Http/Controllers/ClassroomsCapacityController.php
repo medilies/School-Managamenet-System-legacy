@@ -20,7 +20,7 @@ class ClassroomsCapacityController extends Controller
     public function edit(Year $year)
     {
         return view('classrooms_capacity.edit')
-            ->with('classrooms', $year->classrooms()->with("classType")->get())
+            ->with('classroomsByCycle', $year->classrooms()->with("classType")->get()->groupBy(['classType.cycle_id']))
             ->with('year', $year);
     }
 

@@ -44,13 +44,13 @@
             <nav class="overflow-auto max-h-80%">
 
                 {{-- 1 --}}
-                <x-nav.simple-anchor href="#">
+                <x-nav.simple-anchor href="{{ route('home') }}">
                     <x-icons.home />
                     <x-slot name="label"> Acceuil </x-slot>
                 </x-nav.simple-anchor>
 
                 {{-- 2 --}}
-                <x-nav.simple-anchor href="#">
+                <x-nav.simple-anchor href="{{ route('dashboard') }}">
                     <x-icons.view-grid />
                     <x-slot name="label"> Dashboard </x-slot>
                 </x-nav.simple-anchor>
@@ -93,7 +93,10 @@
             <div
                 class="absolute bg-gray-800 text-white bottom-0 left-0 w-full h-16 py-2 px-4 rounded-t-3xl flex items-center justify-between">
 
-                <div> {{ Auth::user()->name }} </div>
+                <div class="flex cursor-pointer">
+                    <x-icons.user-circle />
+                    {{ Auth::user()->name }}
+                </div>
 
                 <div>
                     <form method="POST" action="{{ route('logout') }}">
@@ -109,16 +112,25 @@
         </div>
 
         <!-- Page Content -->
-        <main class="flex-1 max-h-full overflow-auto">
+        <div id="main" class="bg-white flex-1 max-h-full overflow-auto ">
 
             <header class="bg-white shadow">
                 <div class="py-6 px-4">
-                    {{ $header }}
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                        {{ $header }}
+                    </h2>
                 </div>
             </header>
 
-            {{ $slot }}
-        </main>
+            <main class="py-8 px-6">
+                <div class="w-full mx-auto px-6">
+                    <div class="bg-blue-50 p-6 overflow-hidden shadow-md sm:rounded-lg">
+                        {{ $slot }}
+                    </div>
+                </div>
+            </main>
+
+        </div>
 
     </div>
 </body>

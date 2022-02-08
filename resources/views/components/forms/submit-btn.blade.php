@@ -1,4 +1,3 @@
-<button type="submit"
-    class="bg-blue-500 p-3 text-center font-bold text-white rounded-lg float-right mt-2 text-l hover:bg-blue-700 ">
+<button type="submit" class="bg-blue-500 text-white hover:bg-blue-700 mt-2 p-3 rounded-lg text-center font-bold text-l">
     {{ $slot }}
 </button>

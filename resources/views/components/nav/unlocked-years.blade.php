@@ -4,7 +4,9 @@
 </x-nav.simple-anchor>
 
 <div class="flex p-2">
-    <div class="bg-white w-1 mx-2 rounded-lg"></div>
+
+    <div class="bg-white w-1 ml-3 mr-2 rounded-lg"></div>
+
     <div class="flex-1">
 
         @foreach ($unlocked_years as $year)
@@ -17,4 +19,5 @@
         @endforeach
 
     </div>
+
 </div>

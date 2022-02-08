@@ -1,4 +1,4 @@
-<div class="m-2 p-2 border-2 rounded-2xl">
+<div class="m-2 p-2 rounded-2xl">
 
     <h3 class="w-full"> {{ $card_heading }} </h3>
 

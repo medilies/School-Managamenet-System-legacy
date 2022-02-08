@@ -1,40 +1,35 @@
 <x-app-layout>
+
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Ajouté la nouvelle année scolaire') }}
-        </h2>
+        {{ __('Ajouté la nouvelle année scolaire') }}
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200 flex ">
+    <h3 class="mb-8"> {{ $year->establishment_id }} {{ $year->year }} </h3>
 
-                    <h3> {{ $year->establishment_id }} {{ $year->year }} </h3>
+    <form action={{ route('classrooms_capacity.update', ['year' => $year->id]) }} method="post">
 
-                    <form action={{ route('classrooms_capacity.update', ['year' => $year->id]) }} method="post"
-                        class="w-full  border-2 p-4 ">
+        @csrf
+        <input type="hidden" name="first_classroom_id" value="{{ $classroomsByCycle['préscolaire']->first()->id }}">
 
-                        @csrf
-                        <input type="hidden" name="first_classroom_id" value="{{ $classrooms->first()->id }}">
+        @foreach ($classroomsByCycle as $classrooms)
+            <div class="mb-6 flex flex-wrap">
+                @foreach ($classrooms as $classroom)
 
-                        @foreach ($classrooms as $classroom)
+                    <div class="w-2/5 flex justify-between">
+                        <label for="{{ $classroom->id }}"> {{ $classroom->classType->name }} </label>
 
-                            <label for="{{ $classroom->id }}"> {{ $classroom->classType->name }} </label>
+                        <input type="number" min="0" name="{{ $classroom->id }}"
+                            value="{{ old($classroom->id, $classroom->capacity) }}" class="w-24">
+                        <br>
+                    </div>
 
-                            <input type="number" min="0" name="{{ $classroom->id }}"
-                                value="{{ old($classroom->id, $classroom->capacity) }}">
-                            <br>
+                @endforeach
 
-                        @endforeach
-
-                        <x-forms.submit-btn> Mettre à jour</x-forms.submit-btn>
-
-                    </form>
-
-                </div>
             </div>
-        </div>
-    </div>
+        @endforeach
+
+        <x-forms.submit-btn> Mettre à jour</x-forms.submit-btn>
+
+    </form>
 
 </x-app-layout>
