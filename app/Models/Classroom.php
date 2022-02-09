@@ -11,7 +11,6 @@ class Classroom extends Model
 
     protected $guarded = [];
 
-
     public static function activeClassrooms()
     {
         return self::getQuery()
@@ -28,9 +27,9 @@ class Classroom extends Model
     | Relationships
     |-------------------------------------
     */
-    public function year()
+    public function establishmentYear()
     {
-        return $this->belongsTo(Year::class);
+        return $this->belongsTo(EstablishmentYear::class);
     }
 
     public function classType()
@@ -41,5 +40,10 @@ class Classroom extends Model
     public function studentRegistrations()
     {
         return $this->hasMany(StudentRegistration::class);
+    }
+
+    public function students()
+    {
+        return $this->hasManyThrough(Student::class, StudentRegistration::class);
     }
 }

@@ -19,5 +19,12 @@ class EstablishmentExample extends Seeder
             ['id' => 'maraval'],
             ['id' => 'gambetta'],
         ]);
+
+        DB::table('years')->insert([
+            [
+                'id' => '2021',
+                "state" => "current"
+            ],
+        ]);
     }
 }

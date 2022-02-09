@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassroomsTable extends Migration
+class CreateYearsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateClassroomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('classrooms', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedSmallInteger('capacity')->default(0);
+        Schema::create('years', function (Blueprint $table) {
+            $table->year('id');
+            $table->set('state', ['archived', 'current', 'upcoming'])->default("upcoming");
             //
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
-            $table->foreignId('class_type_id')->constrained();
-            $table->foreignId('establishment_year_id')->constrained()->onDelete('cascade');
-            //
-            $table->unique(['class_type_id', 'establishment_year_id']);
+            $table->primary('id');
         });
     }
 
@@ -34,6 +31,6 @@ class CreateClassroomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('years');
     }
 }

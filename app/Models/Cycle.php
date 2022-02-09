@@ -23,4 +23,9 @@ class Cycle extends Model
     {
         return $this->hasMany(ClassType::class);
     }
+
+    public function classrooms()
+    {
+        return $this->hasManyThrough(Classroom::class, ClassType::class);
+    }
 }

@@ -9,6 +9,9 @@ class Year extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $guarded = [];
 
     /*
@@ -16,18 +19,13 @@ class Year extends Model
     | Relationships
     |-------------------------------------
     */
-    public function establishment()
+    public function establishmentYears()
     {
-        return $this->belongsTo(Establishment::class);
+        return $this->hasMany(EstablishmentYear::class);
     }
 
     public function classrooms()
     {
-        return $this->hasMany(Classroom::class);
-    }
-
-    public function studentRegistrations()
-    {
-        return $this->hasManyThrough(StudentRegistration::class, Classroom::class);
+        return $this->hasManyThrough(Classroom::class, EstablishmentYear::class);
     }
 }
