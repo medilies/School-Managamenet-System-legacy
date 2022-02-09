@@ -8,19 +8,19 @@
 
         <div class="flex items-center">
 
-            <a href="{{ route('years.show', ['year' => $year_id]) }}"
+            <a href="{{ route('establishment-years.show', ['establishment_year' => $establishment_year_id]) }}"
                 class="inline-block bg-green-400 hover:bg-green-500 text-white mx-1 p-2 rounded-full">
                 <x-icons.eye />
             </a>
 
-            <a href="{{ route('classrooms_capacity.edit', ['year' => $year_id]) }}"
+            <a href="{{ route('classrooms_capacity.edit', ['establishment_year' => $establishment_year_id]) }}"
                 class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
                 <x-icons.pencil />
             </a>
 
             <a href="#"
                 class="inline-block mx-1 p-2 border border-yellow-600 hover:bg-yellow-600 hover:text-white rounded-2xl font-bold">
-                state
+                {{ $state }}
             </a>
 
         </div>

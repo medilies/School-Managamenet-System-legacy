@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 use App\Models\Establishment;
 use Illuminate\Http\Request;
 
-class EstablishmentController extends Controller
+class EstablishmentController
 {
+
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $establishments_data = Establishment::all();
-        return view('paginate.establishments', ['establishments' => $establishments_data]);
+        //
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -29,8 +31,6 @@ class EstablishmentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -40,8 +40,6 @@ class EstablishmentController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param  \App\Models\Establishment  $establishment
      * @return \Illuminate\Http\Response
      */
@@ -51,8 +49,6 @@ class EstablishmentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param  \App\Models\Establishment  $establishment
      * @return \Illuminate\Http\Response
      */
@@ -62,8 +58,6 @@ class EstablishmentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Establishment  $establishment
      * @return \Illuminate\Http\Response
@@ -74,8 +68,6 @@ class EstablishmentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  \App\Models\Establishment  $establishment
      * @return \Illuminate\Http\Response
      */

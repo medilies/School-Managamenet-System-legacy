@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ $year->year }} {{ strtoupper($year->establishment_id) }}
+        {{ $establishment_year->year_id }} {{ strtoupper($establishment_year->establishment_id) }}
     </x-slot>
 
     <table class="border-2 m-4">

@@ -1,12 +1,13 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ __('Ajouté la nouvelle année scolaire') }}
+        {{ __('Les inscriptions') }}
     </x-slot>
 
     <p>
-        <a href="{{ route('years.show', ['year' => $year->id]) }}" class="text-indigo-600 hover:text-indigo-900">
-            <- {{ $year->establishment_id }} {{ $year->year }} </a>
+        <a href="{{ route('establishment-years.show', ['establishment_year' => $establishment_year->id]) }}"
+            class="text-indigo-600 hover:text-indigo-900">
+            <- {{ $establishment_year->establishment_id }} {{ $establishment_year->year_id }} </a>
     </p>
     <h3> Classe numéro {{ $classroom->id }}</h3>
     <h4> Capacité {{ $registrations->count() }}/{{ $classroom->capacity }} </h4>
@@ -23,7 +24,7 @@
             <tr>
                 <td class="border p-1"> {{ $registration->student->full_name }} </td>
                 <td class="border p-1">
-                    <a href="" class="text-indigo-600 hover:text-indigo-900"> Modifier </a>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"> Modifier </a>
                 </td>
             </tr>
         @endforeach

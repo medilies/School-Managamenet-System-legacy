@@ -9,11 +9,11 @@
 
     <div class="flex-1">
 
-        @foreach ($unlocked_years as $year)
+        @foreach ($active_years as $year)
 
-            <x-nav.simple-anchor href="{{ route('years.show', ['year' => $year->id]) }}">
+            <x-nav.simple-anchor href="{{ route('establishment-years.show', ['establishment_year' => $year->id]) }}">
                 <x-icons.calendar />
-                <x-slot name="label"> {{ $year->year }} {{ $year->establishment_id }} </x-slot>
+                <x-slot name="label"> {{ $year->year_id }} {{ $year->establishment_id }} </x-slot>
             </x-nav.simple-anchor>
 
         @endforeach

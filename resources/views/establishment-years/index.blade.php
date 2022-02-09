@@ -13,7 +13,8 @@
 
         <div class="flex flex-wrap">
             @foreach ($years as $year)
-                <x-cards.year establishment="{{ $year->establishment_id }}" year-id="{{ $year->id }}" />
+                <x-cards.year establishment="{{ $year->establishment_id }}"
+                    establishment-year-id="{{ $year->id }}" state="{{ $year->year->state }}" />
             @endforeach
         </div>
 

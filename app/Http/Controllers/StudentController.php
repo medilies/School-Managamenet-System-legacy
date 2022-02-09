@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 use App\Http\Requests\StoreStudentRequest;
 use App\Models\Classroom;
 use App\Models\Family;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class StudentController
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
      * @return \Illuminate\Http\Response
@@ -35,11 +40,11 @@ class StudentController extends Controller
         $student = $family->students()->create($request->validated());
 
         if (isset($request->classroom)) {
-            $classroom = Classroom::with("year")->findOrFail($request->classroom);
+            $classroom = Classroom::with("establishmentYear")->findOrFail($request->classroom);
 
-            if (!$classroom->capacity > 0 || $classroom->year->is_locked) {
-                throw new \Exception("La capacity de la classe doit etre superieur à 0 et l'année doit etre modifiable", 1);
-            }
+            // if (!$classroom->capacity > 0 || $classroom->year->is_locked) {
+            //     throw new \Exception("La capacity de la classe doit etre superieur à 0 et l'année doit etre modifiable", 1);
+            // }
 
             $classroom->studentRegistrations()->create(["student_id" => $student->id]);
         }
@@ -49,8 +54,6 @@ class StudentController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */

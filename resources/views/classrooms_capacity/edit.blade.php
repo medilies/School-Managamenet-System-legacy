@@ -1,15 +1,14 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ __('Ajouté la nouvelle année scolaire') }}
+        {{ strtoupper($establishment_year->establishment_id) }} {{ $establishment_year->year_id }}
     </x-slot>
 
-    <h3 class="mb-8"> {{ $year->establishment_id }} {{ $year->year }} </h3>
-
-    <form action={{ route('classrooms_capacity.update', ['year' => $year->id]) }} method="post">
+    <form action={{ route('classrooms_capacity.update', ['establishment_year' => $establishment_year->id]) }}
+        method="post">
 
         @csrf
-        <input type="hidden" name="first_classroom_id" value="{{ $classroomsByCycle['préscolaire']->first()->id }}">
+        <input type="hidden" name="first_classroom_id" value="{{ $classroomsByCycle['prescolaire']->first()->id }}">
 
         @foreach ($classroomsByCycle as $classrooms)
             <div class="mb-6 flex flex-wrap">

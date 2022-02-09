@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreYearRequest extends FormRequest
+class StoreEstablishmentYearRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,6 +19,7 @@ class StoreYearRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
+            'year_id' => $this->year,
             'establishment_id' => $this->establishment,
         ]);
     }
@@ -31,7 +32,7 @@ class StoreYearRequest extends FormRequest
     public function rules()
     {
         return [
-            'year' => ['required',],
+            'year_id' => ['required',],
             'establishment_id' => ['required',],
         ];
     }
