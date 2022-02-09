@@ -1,48 +1,23 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ __('Les années scolaires') }}
+        {{ __('Toute les années scolaires') }}
     </x-slot>
 
-    @foreach ($years as $year_name => $year)
+    @foreach ($yearsByyear as $key_year => $years)
 
-        <h3> {{ $year_name }} </h3>
+        <div class="mt-8 mb-2 flex items-center">
+            <h2 class="text-green-700 text-2xl font-bold"> {{ $key_year }} </h2>
+            <div class="bg-green-700 h-1 m-4 flex-1 rounded-lg"></div>
+        </div>
 
-        <table class="border-2 m-4">
-
-            <tr>
-                <th class="border p-1"> Année </th>
-                <th class="border p-1"> établissement </th>
-                <th class="border p-1"> locked </th>
-                <th class="border p-1"></th>
-            </tr>
-
-            @foreach ($year as $establishment_year)
-
-                <tr>
-                    <td class="border p-1">{{ $establishment_year->year->year }}</td>
-                    <td class="border p-1">{{ $establishment_year->year->establishment_id }}</td>
-                    <td class="border p-1">{{ $establishment_year->year->locked }}</td>
-                    <td class="border p-1">
-
-                        <a href="{{ route('years.show', ['year' => $establishment_year->year->id]) }}"
-                            class="text-indigo-600 hover:text-indigo-900">
-                            Voir </a>
-
-                        -
-
-                        {{-- equal to current working year condition to show --}}
-                        <a href="{{ route('classrooms_capacity.edit', ['year' => $establishment_year->year->id]) }}"
-                            class="text-indigo-600 hover:text-indigo-900">
-                            modifier </a>
-
-                    </td>
-                </tr>
-
+        <div class="flex flex-wrap">
+            @foreach ($years as $year)
+                <x-cards.year establishment="{{ $year->establishment_id }}" year-id="{{ $year->id }}" />
             @endforeach
-
-        </table>
+        </div>
 
     @endforeach
+
 
 </x-app-layout>

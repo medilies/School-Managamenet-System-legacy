@@ -26,8 +26,7 @@
 
     <div class="flex h-screen">
 
-        {{-- fixed left-0 top-0 ? --}}
-        <div class="bg-blue-900 h-screen w-72 p-4 shadow-md relative">
+        <aside class="bg-blue-900 h-screen w-72 p-4 shadow-md relative">
 
             {{-- LOGO --}}
             <div class="m-1">
@@ -43,46 +42,38 @@
 
             <nav class="overflow-auto max-h-80%">
 
-                {{-- 1 --}}
                 <x-nav.simple-anchor href="{{ route('home') }}">
                     <x-icons.home />
                     <x-slot name="label"> Acceuil </x-slot>
                 </x-nav.simple-anchor>
 
-                {{-- 2 --}}
                 <x-nav.simple-anchor href="{{ route('dashboard') }}">
                     <x-icons.view-grid />
                     <x-slot name="label"> Dashboard </x-slot>
                 </x-nav.simple-anchor>
 
-                {{-- 3 --}}
                 <x-nav.simple-anchor href="{{ route('establishments.index') }}">
                     <x-icons.office-building />
                     <x-slot name="label"> Etablisments </x-slot>
                 </x-nav.simple-anchor>
 
-                {{-- 4 --}}
                 <x-nav.simple-anchor href="{{ route('years.index') }}">
                     <x-icons.calendar />
-                    <x-slot name="label"> Année scolaires </x-slot>
+                    <x-slot name="label"> Années scolaires </x-slot>
                 </x-nav.simple-anchor>
 
-                {{-- 5 --}}
                 <x-nav.unlocked-years />
 
-                {{-- 6 --}}
                 <x-nav.simple-anchor href="{{ route('families.index') }}">
                     <x-icons.user-group />
                     <x-slot name="label"> Les familles </x-slot>
                 </x-nav.simple-anchor>
 
-                {{-- 7 --}}
                 <x-nav.simple-anchor href="{{ route('students.index') }}">
                     <x-icons.user />
                     <x-slot name="label"> Les étudiants </x-slot>
                 </x-nav.simple-anchor>
 
-                {{-- 8 --}}
                 <x-nav.simple-anchor href="{{ route('clients.index') }}">
                     <x-icons.users />
                     <x-slot name="label"> Les parents </x-slot>
@@ -93,9 +84,12 @@
             <div
                 class="absolute bg-gray-800 text-white bottom-0 left-0 w-full h-16 py-2 px-4 rounded-t-3xl flex items-center justify-between">
 
-                <div class="flex cursor-pointer">
+                <div class="flex items-center cursor-pointer">
                     <x-icons.user-circle />
-                    {{ Auth::user()->name }}
+                    <div class="ml-2">
+                        <div class="text-sm"> {{ Auth::user()->name }} </div>
+                        <div class="text-xs"> {{ Auth::user()->email }} </div>
+                    </div>
                 </div>
 
                 <div>
@@ -108,10 +102,9 @@
                 </div>
 
             </div>
+        </aside>
 
-        </div>
-
-        <!-- Page Content -->
+        {{-- Page Content --}}
         <div id="main" class="bg-white flex-1 max-h-full overflow-auto ">
 
             <header class="bg-white shadow">

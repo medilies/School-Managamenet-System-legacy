@@ -1,10 +1,8 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ __('Ajouté la nouvelle année scolaire') }}
+        {{ $year->year }} {{ strtoupper($year->establishment_id) }}
     </x-slot>
-
-    <h3>{{ $year->year }} {{ $year->establishment_id }}</h3>
 
     <table class="border-2 m-4">
 

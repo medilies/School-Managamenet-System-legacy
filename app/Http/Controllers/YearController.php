@@ -16,13 +16,8 @@ class YearController extends Controller
      */
     public function index()
     {
-        $years = Classroom::with('year')
-            ->groupBy('year_id')
-            ->get(['year_id'])
-            ->groupBy('year.year');
-
         return view('years.index')
-            ->with('years', $years);
+            ->with('yearsByyear', Year::all()->groupBy("year"));
     }
 
     /**
