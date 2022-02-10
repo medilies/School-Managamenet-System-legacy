@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\EstablishmentYear;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -46,6 +47,15 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+        });
+
+        Route::bind('establishment_year', function ($value) {
+            if (is_numeric($value)) {
+                return  EstablishmentYear::findOrFail($value);
+            } else {
+                $fks = explode('-', $value);
+                return EstablishmentYear::where('year_id', $fks[0])->where('establishment_id', $fks[1])->firstOrFail();
+            }
         });
     }
 

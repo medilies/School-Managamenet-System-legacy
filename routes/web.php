@@ -49,10 +49,11 @@ Route::resource('establishments', EstablishmentController::class)->middleware(['
 Route::resource('establishment-years', EstablishmentYearController::class)->except(['edit', 'update', 'destoy'])->middleware(['auth']);
 
 Route::controller(ClassroomsCapacityController::class)
+    ->prefix("classrooms-capacity/establishment_year/")
     ->middleware((['auth']))
     ->group(function () {
-        Route::get('/classrooms-capacity/establishment_year/{establishment_year}/edit', 'edit')->name('classrooms_capacity.edit');
-        Route::post('/classrooms-capacity/establishment_year/{establishment_year}/update', 'update')->name('classrooms_capacity.update');
+        Route::get('/{establishment_year}/edit', 'edit')->name('classrooms_capacity.edit');
+        Route::post('/{establishment_year}/update', 'update')->name('classrooms_capacity.update');
     });
 
 Route::resource('classrooms', ClassroomController::class)->except(['create', 'store', 'destroy'])->middleware(['auth']);

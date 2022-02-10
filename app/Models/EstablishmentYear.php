@@ -35,4 +35,14 @@ class EstablishmentYear extends Model
     {
         return $this->hasManyThrough(StudentRegistration::class, Classroom::class);
     }
+
+    /*
+    |-------------------------------------
+    | Accessors & mutators
+    |-------------------------------------
+    */
+    public function getComposedKeyAttribute()
+    {
+        return "{$this->year_id}-{$this->establishment_id}";
+    }
 }
