@@ -5,6 +5,13 @@
         @isset($father->lname)
             {{ $father->lname }}
         @endisset
+
+        <a href="{{ route('families.create') }}" title="Ajouter une nouvelle famille"
+            class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
+
+            <x-icons.plus />
+        </a>
+
     </x-slot>
 
     {{-- CLIENTS --}}
@@ -14,7 +21,6 @@
         <div class="bg-white w-1/2 p-4 m-4 shadow-md rounded-lg">
 
             @if (empty($father->fname))
-
                 <form action={{ route('clients.store') }} method="post">
 
                     @csrf
@@ -34,7 +40,6 @@
                 <x-cards.client1 :client-data="$father">
                     <x-slot name="card_heading"> Le père </x-slot>
                 </x-cards.client1>
-
             @endif
 
         </div>
@@ -43,7 +48,6 @@
         <div class="bg-white w-1/2 p-4 m-4 shadow-md rounded-lg">
 
             @if (empty($mother->fname))
-
                 <form action={{ route('clients.store') }} method="post">
 
                     @csrf
@@ -63,7 +67,6 @@
                 <x-cards.client1 :client-data="$mother">
                     <x-slot name="card_heading"> La mère </x-slot>
                 </x-cards.client1>
-
             @endif
 
         </div>
@@ -80,7 +83,6 @@
         <div class="flex flex-wrap">
 
             @foreach ($students as $student)
-
                 <div class="w-1/4">
                     <x-cards.student1 :student-data="$student">
                         <x-slot name="card_heading"> étudiant </x-slot>
@@ -88,7 +90,6 @@
                     {{-- NEED JOINED QUERY to get latest classroom --}}
                     {{-- {{ $student->studentRegistrations->last()->id }} --}}
                 </div>
-
             @endforeach
 
             <div class="bg-white w-1/2 p-4 m-4 shadow-md rounded-lg">

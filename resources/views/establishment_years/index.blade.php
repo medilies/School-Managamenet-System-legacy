@@ -2,6 +2,13 @@
 
     <x-slot name="header">
         {{ __("L'index des années scolaires") }}
+
+        <a href="{{ route('establishment-years.create') }}"
+            title="Ajouter une nouvelle année scolaire pour un établissement"
+            class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
+
+            <x-icons.plus />
+        </a>
     </x-slot>
 
     @foreach ($yearsByyear as $key_year => $years)

@@ -20,7 +20,8 @@ class FamilyController
      */
     public function index()
     {
-        //
+        return view("families.index")
+            ->with("families", Family::where("id", ">", 0)->withCount(['students', "clients"])->with('clients')->get());
     }
 
     /**
@@ -58,7 +59,7 @@ class FamilyController
             ->with('family_id', $family->id)
             ->with('father', $clients->where('family_title', 'father')->first())
             ->with('mother', $clients->where('family_title', 'mother')->first())
-            ->with('students', $family->students)
-            ->with('active_classrooms', Classroom::activeClassrooms());
+            ->with('students', $family->students()->with(['studentRegistrations'])->get())
+            ->with('active_classrooms', Classroom::nonarchivedActiveClassrooms());
     }
 }

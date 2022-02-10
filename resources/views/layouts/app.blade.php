@@ -67,7 +67,7 @@
 
                 <x-nav.simple-anchor href="{{ route('students.index') }}">
                     <x-icons.user />
-                    <x-slot name="label"> Les étudiants </x-slot>
+                    <x-slot name="label"> Les élèves </x-slot>
                 </x-nav.simple-anchor>
 
                 <x-nav.simple-anchor href="{{ route('clients.index') }}">
