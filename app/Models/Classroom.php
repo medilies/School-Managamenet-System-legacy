@@ -11,9 +11,10 @@ class Classroom extends Model
 
     protected $guarded = [];
 
-    public static function activeClassrooms()
+    public static function nonarchivedActiveClassrooms()
     {
-        return self::getQuery()
+        return self::active()
+            ->getQuery()
             ->join('establishment_years', "classrooms.establishment_year_id", "=", "establishment_years.id")
             ->join("class_types", "classrooms.class_type_id", "=", "class_types.id")
             ->join("years", "years.id", "=", "establishment_years.year_id")
@@ -25,7 +26,6 @@ class Classroom extends Model
                 'classrooms.capacity',
                 'classrooms.id as id'
             ])
-            ->where("classrooms.capacity", ">", 0)
             ->where('years.state', "!=", "archived")
             ->get()
             ->groupBy(['year', 'establishment_id']);
@@ -36,6 +36,7 @@ class Classroom extends Model
     | Relationships
     |-------------------------------------
     */
+
     public function establishmentYear()
     {
         return $this->belongsTo(EstablishmentYear::class);
@@ -54,5 +55,20 @@ class Classroom extends Model
     public function students()
     {
         return $this->hasManyThrough(Student::class, StudentRegistration::class);
+    }
+
+    /*
+    |-------------------------------------
+    | Scopes
+    |-------------------------------------
+
+    */
+    /**
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where("classrooms.capacity", ">", 0);
     }
 }

@@ -9,12 +9,16 @@
         <div class="flex items-center">
 
             <a href="{{ route('establishment-years.show', ['establishment_year' => $composed_key]) }}"
+                title="Voir les classes"
                 class="inline-block bg-green-400 hover:bg-green-500 text-white mx-1 p-2 rounded-full">
+
                 <x-icons.eye />
             </a>
 
             <a href="{{ route('classrooms_capacity.edit', ['establishment_year' => $composed_key]) }}"
+                title="Modifier la capacité des classes"
                 class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
+
                 <x-icons.pencil />
             </a>
 

@@ -21,6 +21,7 @@ class EstablishmentYearController
      */
     public function index()
     {
+        // NEEDS MORE WORK withCount(active classrooms)
         return view('establishment-years.index')
             ->with('yearsByyear', EstablishmentYear::where('id', '>', 0)->with('year')->get()->groupBy("year_id"));
     }

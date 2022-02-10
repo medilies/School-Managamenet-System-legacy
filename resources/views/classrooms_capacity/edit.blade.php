@@ -1,7 +1,19 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ strtoupper($establishment_year->establishment_id) }} {{ $establishment_year->year_id }}
+
+    </x-slot>
+    <x-slot name="header">
+        <div class="mr-4">
+            {{ strtoupper($establishment_year->composed_key) }}
+        </div>
+
+        <a href="{{ route('establishment-years.show', ['establishment_year' => $establishment_year->composed_key]) }}"
+            title="Voir les classes"
+            class="inline-block bg-green-400 hover:bg-green-500 text-white mx-1 p-2 rounded-full">
+
+            <x-icons.eye />
+        </a>
     </x-slot>
 
     <form

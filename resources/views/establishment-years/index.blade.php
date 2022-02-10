@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ __('Toute les années scolaires') }}
+        {{ __("L'index des années scolaires") }}
     </x-slot>
 
     @foreach ($yearsByyear as $key_year => $years)
