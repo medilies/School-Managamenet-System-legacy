@@ -9,7 +9,7 @@
         @foreach ($establishment_classes as $year)
             @foreach ($year as $establishment)
 
-                <div>
+                {{-- <div>
 
                     <h3> {{ $establishment[0]->year->year }}
                         {{ $establishment[0]->year->establishment_id }} </h3>
@@ -34,7 +34,7 @@
 
                     </table>
 
-                </div>
+                </div> --}}
 
             @endforeach
         @endforeach

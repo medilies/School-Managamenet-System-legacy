@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 use App\Http\Requests\StoreClientRequest;
 use App\Models\Classroom;
 use App\Models\Family;
-use Illuminate\Http\Request;
 
-class FamilyController extends Controller
+class FamilyController
 {
+
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
      * @return \Illuminate\Http\Response
      */

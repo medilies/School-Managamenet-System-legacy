@@ -4,16 +4,19 @@
         {{ __('Ajouté la nouvelle année scolaire') }}
     </x-slot>
 
-    <form action={{ route('years.store') }} method="post">
+    <form action={{ route('establishment-years.store') }} method="post">
 
         @csrf
 
-        {{-- REFACTOR min & MAX --}}
-        <x-forms.input name="year" type="number" min="{{ (int) date('Y') - 1 }}" max="{{ (int) date('Y') + 1 }}">
-            <x-slot name="label_text"> L'année </x-slot>
-        </x-forms.input>
+        <select name="year">
 
-        {{-- TURN to component --}}
+            @foreach ($years as $year)
+                <option value="{{ $year->id }}">{{ $year->id }}
+                </option>
+            @endforeach
+
+        </select>
+
         <select name="establishment">
 
             @foreach ($establishments as $establishment)

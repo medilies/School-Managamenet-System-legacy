@@ -57,12 +57,12 @@
                     <x-slot name="label"> Etablisments </x-slot>
                 </x-nav.simple-anchor>
 
-                <x-nav.simple-anchor href="{{ route('years.index') }}">
+                <x-nav.simple-anchor href="{{ route('establishment-years.index') }}">
                     <x-icons.calendar />
                     <x-slot name="label"> Années scolaires </x-slot>
                 </x-nav.simple-anchor>
 
-                <x-nav.unlocked-years />
+                <x-nav.active-years />
 
                 <x-nav.simple-anchor href="{{ route('families.index') }}">
                     <x-icons.user-group />

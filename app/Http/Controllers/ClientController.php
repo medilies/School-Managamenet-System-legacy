@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 use App\Http\Requests\StoreClientRequest;
 use App\Models\Client;
 use App\Models\Family;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class ClientController
 {
 
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $clients_page = Client::query()->orderBy('id', 'desc')->paginate(10);
-
         return view('clients.index')
-            ->with('clients', $clients_page);
+            ->with('clients', Client::orderBy('id', 'desc')->paginate(10));
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -44,8 +44,6 @@ class ClientController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
@@ -55,8 +53,6 @@ class ClientController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
@@ -66,8 +62,6 @@ class ClientController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
@@ -78,8 +72,6 @@ class ClientController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */

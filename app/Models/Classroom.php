@@ -14,10 +14,19 @@ class Classroom extends Model
     public static function activeClassrooms()
     {
         return self::getQuery()
-            ->join('years', "classrooms.year_id", "=", "years.id")
+            ->join('establishment_years', "classrooms.establishment_year_id", "=", "establishment_years.id")
             ->join("class_types", "classrooms.class_type_id", "=", "class_types.id")
-            ->select('year', 'establishment_id', 'cycle_id', 'name',  'capacity', 'year_id', 'class_type_id', 'classrooms.id as id')
-            ->where("capacity", ">", 0)
+            ->join("years", "years.id", "=", "establishment_years.year_id")
+            ->select([
+                'establishment_years.year_id',
+                'establishment_years.establishment_id',
+                'class_types.cycle_id',
+                'class_types.name',
+                'classrooms.capacity',
+                'classrooms.id as id'
+            ])
+            ->where("classrooms.capacity", ">", 0)
+            ->where('years.state', "!=", "archived")
             ->get()
             ->groupBy(['year', 'establishment_id']);
     }
