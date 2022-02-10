@@ -1,9 +1,6 @@
 <x-app-layout>
 
     <x-slot name="header">
-
-    </x-slot>
-    <x-slot name="header">
         <div class="mr-4">
             {{ strtoupper($establishment_year->composed_key) }}
         </div>
