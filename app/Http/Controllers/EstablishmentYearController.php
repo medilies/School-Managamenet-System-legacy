@@ -21,7 +21,8 @@ class EstablishmentYearController
      */
     public function index()
     {
-        return view('establishment-years.index')
+        // NEEDS MORE WORK withCount(active classrooms)
+        return view('establishment_years.index')
             ->with('yearsByyear', EstablishmentYear::where('id', '>', 0)->with('year')->get()->groupBy("year_id"));
     }
 
@@ -30,7 +31,7 @@ class EstablishmentYearController
      */
     public function create()
     {
-        return view('establishment-years.create')
+        return view('establishment_years.create')
             ->with('establishments', Establishment::all())
             ->with('years', Year::whereIn('state', ['current', 'upcoming'])->get());
     }
@@ -74,7 +75,7 @@ class EstablishmentYearController
      */
     public function show(EstablishmentYear $establishment_year)
     {
-        return view("establishment-years.show")
+        return view("establishment_years.show")
             ->with('establishment_year', $establishment_year)
             ->with('classrooms', $establishment_year->classrooms()->with(['establishmentYear', 'classType'])->withCount(["studentRegistrations"])->get());
     }

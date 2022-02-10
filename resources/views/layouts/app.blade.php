@@ -105,7 +105,7 @@
 
             <header class="bg-white shadow">
                 <div class="py-6 px-4">
-                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
                         {{ $header }}
                     </h2>
                 </div>

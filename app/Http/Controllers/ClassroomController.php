@@ -9,7 +9,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Models\Classroom;
 use App\Http\Requests\UpdateClassroomRequest;
 use App\Models\EstablishmentYear;
-use App\Models\Year;
 
 class ClassroomController
 {
@@ -20,15 +19,7 @@ class ClassroomController
      */
     public function index()
     {
-        // $establishment_classes = Classroom::with('classType', 'year')
-        //     ->orderBy('year_id', 'desc')
-        //     ->orderBy('class_type_id')
-        //     ->get()
-        //     ->groupBy(['year.year', 'year.establishment_id']);
-
-        // // not done
-        // return view('classrooms.index')
-        //     ->with('establishment_classes', $establishment_classes);
+        //
     }
 
     /**
@@ -39,6 +30,7 @@ class ClassroomController
     {
         return view("classrooms.show")
             ->with('classroom', $classroom)
+            ->with('class_type', $classroom->classType->name)
             ->with('registrations', $classroom->studentRegistrations()->with(["student"])->get())
             ->with('establishment_year', EstablishmentYear::findOrfail($classroom->establishment_year_id));
     }

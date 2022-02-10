@@ -1,13 +1,15 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ __('Les inscriptions') }}
+        {{ strtoupper($establishment_year->composed_key) }} - {{ $class_type }}
     </x-slot>
 
     <p>
         <a href="{{ route('establishment-years.show', ['establishment_year' => "$establishment_year->composed_key"]) }}"
-            class="text-indigo-600 hover:text-indigo-900">
-            <- {{ $establishment_year->establishment_id }} {{ $establishment_year->year_id }} </a>
+            class="text-indigo-600 hover:text-indigo-900 flex">
+            <x-icons.arrow-left />
+            {{ strtoupper($establishment_year->composed_key) }}
+        </a>
     </p>
 
     <h3> Classe numéro {{ $classroom->id }}</h3>

@@ -37,11 +37,6 @@ require __DIR__ . '/auth.php';
 | Ressource Routes
 |-------------------------------------
 */
-Route::resource('clients', ClientController::class)->except(['create'])->middleware(['auth']);
-
-Route::resource('students', StudentController::class)->except(['create'])->middleware(['auth']);
-
-Route::resource('families', FamilyController::class)->middleware(['auth']);
 
 Route::resource('establishments', YearController::class)->except(['destroy'])->middleware(['auth']);
 Route::resource('establishments', EstablishmentController::class)->middleware(['auth']);
@@ -55,6 +50,12 @@ Route::controller(ClassroomsCapacityController::class)
         Route::get('/{establishment_year}/edit', 'edit')->name('classrooms_capacity.edit');
         Route::post('/{establishment_year}/update', 'update')->name('classrooms_capacity.update');
     });
+
+Route::resource('clients', ClientController::class)->except(['create'])->middleware(['auth']);
+
+Route::resource('students', StudentController::class)->except(['create'])->middleware(['auth']);
+
+Route::resource('families', FamilyController::class)->middleware(['auth']);
 
 Route::resource('classrooms', ClassroomController::class)->except(['create', 'store', 'destroy'])->middleware(['auth']);
 
