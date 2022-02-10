@@ -1,14 +1,11 @@
 <?php
 
-namespace App\View\Components\Nav;
+namespace App\View\Components\Icons;
 
-use App\Models\Year;
 use Illuminate\View\Component;
 
-class UnlockedYears extends Component
+class ArrowLeft extends Component
 {
-    public $unlocked_years;
-
     /**
      * Create a new component instance.
      *
@@ -16,7 +13,7 @@ class UnlockedYears extends Component
      */
     public function __construct()
     {
-        $this->unlocked_years = Year::where("locked", false)->get();
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class UnlockedYears extends Component
      */
     public function render()
     {
-        return view('components.nav.unlocked-years');
+        return view('components.icons.arrow-left');
     }
 }

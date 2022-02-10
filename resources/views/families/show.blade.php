@@ -85,6 +85,8 @@
                     <x-cards.student1 :student-data="$student">
                         <x-slot name="card_heading"> étudiant </x-slot>
                     </x-cards.student1>
+                    {{-- NEED JOINED QUERY to get latest classroom --}}
+                    {{-- {{ $student->studentRegistrations->last()->id }} --}}
                 </div>
 
             @endforeach

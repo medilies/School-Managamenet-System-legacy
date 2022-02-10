@@ -1,8 +1,18 @@
 <x-app-layout>
 
     <x-slot name="header">
-        {{ $year->year }} {{ strtoupper($year->establishment_id) }}
+        <div class="mr-4">
+            {{ strtoupper($establishment_year->composed_key) }}
+        </div>
+
+        <a href="{{ route('classrooms_capacity.edit', ['establishment_year' => $establishment_year->composed_key]) }}"
+            title="Modifier la capacité des classes"
+            class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
+
+            <x-icons.pencil />
+        </a>
     </x-slot>
+
 
     <table class="border-2 m-4">
 
@@ -14,7 +24,6 @@
         </tr>
 
         @foreach ($classrooms as $classroom)
-
             @if ($classroom->capacity === 0) @php continue; @endphp @endif
 
             <tr>

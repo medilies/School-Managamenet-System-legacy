@@ -15,14 +15,14 @@ class EducSystem extends Seeder
     public function run()
     {
         DB::table('cycles')->insert([
-            ['id' => 'préscolaire'],
+            ['id' => 'prescolaire'],
             ['id' => 'primaire'],
             ['id' => 'moyen'],
             ['id' => 'secondaire'],
         ]);
 
         DB::table('class_types')->insert([
-            ['id' => 1, 'cycle_id' => 'préscolaire', 'name' => 'préscolaire'],
+            ['id' => 1, 'cycle_id' => 'prescolaire', 'name' => 'préscolaire'],
             ['id' => 2, 'cycle_id' => 'primaire', 'name' => '1re AP'],
             ['id' => 3, 'cycle_id' => 'primaire', 'name' => '2e AP'],
             ['id' => 4, 'cycle_id' => 'primaire', 'name' => '3e AP'],

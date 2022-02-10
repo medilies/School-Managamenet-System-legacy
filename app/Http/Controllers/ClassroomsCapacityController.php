@@ -2,26 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
 use App\Models\Classroom;
 use App\Models\ClassType;
-use App\Models\Year;
+use App\Models\EstablishmentYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
  * Grabs a year's (example sabah-2022) classrooms and bulk update their capacity
  */
-class ClassroomsCapacityController extends Controller
+class ClassroomsCapacityController
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
      * @param  \App\Models\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function edit(Year $year)
+    public function edit(EstablishmentYear $establishment_year)
     {
         return view('classrooms_capacity.edit')
-            ->with('classroomsByCycle', $year->classrooms()->with("classType")->get()->groupBy(['classType.cycle_id']))
-            ->with('year', $year);
+            ->with('classroomsByCycle', $establishment_year->classrooms()->with("classType")->get()->groupBy(['classType.cycle_id']))
+            ->with('establishment_year', $establishment_year);
     }
 
     /**

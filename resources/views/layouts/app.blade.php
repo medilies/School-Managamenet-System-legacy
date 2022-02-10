@@ -1,7 +1,3 @@
-@php
-\Debugbar::disable();
-@endphp
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -57,12 +53,12 @@
                     <x-slot name="label"> Etablisments </x-slot>
                 </x-nav.simple-anchor>
 
-                <x-nav.simple-anchor href="{{ route('years.index') }}">
+                <x-nav.simple-anchor href="{{ route('establishment-years.index') }}">
                     <x-icons.calendar />
                     <x-slot name="label"> Années scolaires </x-slot>
                 </x-nav.simple-anchor>
 
-                <x-nav.unlocked-years />
+                <x-nav.active-years />
 
                 <x-nav.simple-anchor href="{{ route('families.index') }}">
                     <x-icons.user-group />
@@ -109,7 +105,7 @@
 
             <header class="bg-white shadow">
                 <div class="py-6 px-4">
-                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
                         {{ $header }}
                     </h2>
                 </div>

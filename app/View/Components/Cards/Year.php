@@ -9,17 +9,17 @@ class Year extends Component
 {
 
     public $establishment;
-    public $year_id;
+    public $composed_key;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($establishment, $yearId)
+    public function __construct($establishment, $composedKey)
     {
         $this->establishment = $establishment;
-        $this->year_id = $yearId;
+        $this->composed_key = $composedKey;
     }
 
     /**
