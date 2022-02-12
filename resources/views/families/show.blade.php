@@ -18,7 +18,7 @@
     <div class="flex content-between">
 
         {{-- FATHER --}}
-        <div class="bg-white w-1/2 p-4 m-4 shadow-md rounded-lg">
+        <div class="bg-white w-1/2 py-2 px-4 m-4 shadow-inner rounded-lg">
 
             @if (empty($father->fname))
                 <form action={{ route('clients.store') }} method="post">
@@ -45,7 +45,7 @@
         </div>
 
         {{-- MOTHER --}}
-        <div class="bg-white w-1/2 p-4 m-4 shadow-md rounded-lg">
+        <div class="bg-white w-1/2 py-2 px-4 m-4 shadow-inner rounded-lg">
 
             @if (empty($mother->fname))
                 <form action={{ route('clients.store') }} method="post">
@@ -74,25 +74,26 @@
     </div>
 
     {{-- STUDENTS --}}
-    <div class="bg-white w-auto my-4 mx-8 p-2 rounded-lg">
+    <div class="bg-white w-auto my-4 mx-8 p-2 shadow-inner rounded-lg">
 
-        <div>
-            {{ $students->count() }} {{ Str::plural('enfant', $students->count()) }}
+        <div class="mt-2 ml-2 text-lg">
+            <span class="font-bold"> {{ $students->count() }} </span>
+            {{ Str::plural('enfant', $students->count()) }}
         </div>
 
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap justify-around">
 
             @foreach ($students as $student)
-                <div class="w-1/4">
+                <div class="">
                     <x-cards.student1 :student-data="$student">
-                        <x-slot name="card_heading"> étudiant </x-slot>
+                        <x-slot name="card_heading"> élève </x-slot>
                     </x-cards.student1>
                     {{-- NEED JOINED QUERY to get latest classroom --}}
                     {{-- {{ $student->studentRegistrations->last()->id }} --}}
                 </div>
             @endforeach
 
-            <div class="bg-white w-1/2 p-4 m-4 shadow-md rounded-lg">
+            <div class="bg-white max-w-screen-sm p-4 m-4 shadow-md rounded-lg">
 
                 <form action={{ route('students.store') }} method="post">
 
@@ -100,7 +101,7 @@
                     <input type="hidden" name="family_id" value="{{ $family_id }}">
 
                     <x-forms.student-form :active-classrooms="$active_classrooms">
-                        <x-slot name="form_heading"> Ajouter l'étudiant</x-slot>
+                        <x-slot name="form_heading"> Ajouter un fils (élève) </x-slot>
                     </x-forms.student-form>
 
                     <x-forms.submit-btn> Ajouter </x-forms.submit-btn>

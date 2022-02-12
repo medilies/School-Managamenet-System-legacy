@@ -6,7 +6,7 @@
 
     <div class="flex content-between">
 
-        <div class="bg-white p-4 m-4 shadow-md rounded-lg">
+        <div class="bg-white py-2 px-4 m-4 shadow-inner rounded-lg">
             {{-- FATHER --}}
             <form action={{ route('families.store') }} method="post">
 
@@ -22,7 +22,7 @@
             </form>
         </div>
 
-        <div class="bg-white p-4 m-4 shadow-md rounded-lg">
+        <div class="bg-white py-2 px-4 m-4 shadow-inner rounded-lg">
             {{-- MOTHER --}}
             <form action={{ route('families.store') }} method="post">
 
@@ -41,7 +41,7 @@
     </div>
 
     <div class="w-auto h-64 mx-12 my-4 bg-white rounded-lg grid place-content-center">
-        <div> Les enfants/étudiants </div>
+        <div> Les enfants/élèves </div>
     </div>
 
 </x-app-layout>

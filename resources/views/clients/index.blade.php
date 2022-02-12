@@ -4,38 +4,35 @@
         {{ __('Liste des parents') }}
     </x-slot>
 
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+    <div class="overflow-x-auto">
+        <div class="p-2 inline-block min-w-full">
 
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="shadow overflow-hidden border-b border-gray-200 rounded-lg">
 
                 <table class="min-w-full divide-y divide-gray-200">
 
-                    <thead class="bg-gray-50">
+                    <thead class="bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
                         <tr>
-                            <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 font-medium">
                                 Nom
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Email
+
+                            <th scope="col" class="px-6 py-3 font-medium">
+                                Contact
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Etat
+
+                            <th scope="col" class="px-6 py-3 font-medium">
+                                Addresse
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Inscrit à
+
+                            <th scope="col" class="px-6 py-3 font-medium">
+                                Inscrit le
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Télephone
-                            </th>
+
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
+
                         </tr>
 
                     </thead>
@@ -43,7 +40,6 @@
                     <tbody class="bg-white divide-y divide-gray-200">
 
                         @foreach ($clients as $client)
-
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
@@ -57,35 +53,37 @@
                                                 {{ $client->full_name }}
                                             </div>
                                             <div class="text-sm text-gray-500">
-                                                {{ $client->arabic_full_name }}
+                                                {{ $client->profession }}
                                             </div>
                                         </div>
                                     </div>
                                 </td>
+
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{ $client->email }}</div>
-                                    <div class="text-sm text-gray-500">à {{ $client->address }}</div>
+                                    <div class="text-sm text-gray-900">{{ $client->phone }}</div>
+                                    <div class="text-sm text-gray-500">à {{ $client->email }}</div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Accepté
-                                    </span>
+
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    {{ $client->address }}
                                 </td>
+
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $client->created_at }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $client->phone }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Voir</a>
-                                    -
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Ajouter un
-                                        enfant</a>
-                                </td>
-                            </tr>
 
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="{{ route('clients.show', ['client' => $client->id]) }}"
+                                        class="text-indigo-600 hover:text-indigo-900"> Voir </a>
+                                    -
+                                    <a href="{{ route('clients.edit', ['client' => $client->id]) }}"
+                                        class="text-indigo-600 hover:text-indigo-900"> Modifier </a>
+                                    -
+                                    <a href="{{ route('families.show', ['family' => $client->family_id]) }}"
+                                        class="text-indigo-600 hover:text-indigo-900"> Famille </a>
+                                </td>
+
+                            </tr>
                         @endforeach
 
                     </tbody>

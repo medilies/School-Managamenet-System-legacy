@@ -1,12 +1,13 @@
 <div class="m-2 p-2 rounded-2xl">
 
-    <h3 class="w-full"> {{ $card_heading }} </h3>
+    <h3 class="w-full text-xl"> {{ $card_heading }} </h3>
 
-    <div class="p-2"> Nom: {{ $client_data->lname }} </div>
-    <div class="p-2"> Prenom: {{ $client_data->fname }} </div>
-    <div class="p-2"> Profession: {{ $client_data->profession }} </div>
-    <div class="p-2"> Email: {{ $client_data->email }} </div>
-    <div class="p-2"> Téléphone: {{ $client_data->phone }} </div>
-    <div class="p-2"> Addresse: {{ $client_data->address }} </div>
+    <div class="ml-1 p-1"> <span class="font-bold"> {{ $client_data->full_name }} </span> </div>
+    <div class="ml-2 p-1"> Profession: <span class="text-gray-700 text-sm"> {{ $client_data->profession }} </span>
+    </div>
+    <div class="ml-2 p-1"> Téléphone: <span class="font-bold"> {{ $client_data->phone }} </span> </div>
+    <div class="ml-2 p-1"> Email: <span class="text-gray-700 text-sm"> {{ $client_data->email }} </span> </div>
+    <div class="ml-2 p-1"> Addresse: <span class="text-gray-700 text-sm"> {{ $client_data->address }} </span>
+    </div>
 
 </div>

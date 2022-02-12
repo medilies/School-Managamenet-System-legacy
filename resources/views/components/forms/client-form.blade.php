@@ -1,6 +1,6 @@
 <div class="flex flex-wrap mx-2 mb-3 p-1">
 
-    <h3 class="w-full"> {{ $form_heading }} </h3>
+    <h3 class="w-full text-xl"> {{ $form_heading }} </h3>
 
     <x-forms.input type="text" name="fname">
         <x-slot name="label_text"> Prénom </x-slot>

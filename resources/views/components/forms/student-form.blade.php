@@ -1,6 +1,6 @@
-<div class="flex flex-wrap mx-3 mb-6 ">
+<div class="flex flex-wrap mx-2 ">
 
-    <h3 class="w-full"> {{ $form_heading }} </h3>
+    <h3 class="w-full text-xl"> {{ $form_heading }} </h3>
 
     <x-forms.input name="fname" type="text">
         <x-slot name="label_text"> Prénom </x-slot>
@@ -26,7 +26,8 @@
         <x-slot name="label_text"> Lieu de naissance </x-slot>
     </x-forms.input>
 
-    <select name="classroom">
+    <select name="classroom"
+        class="bg-gray-100 text-gray-700 border border-gray-200 focus:outline-none focus:bg-white focus:border-gray-500 w-1/2 m-2 rounded-md">
         <option disabled selected value> -- Séléctionnez une classe -- </option>
 
         @foreach ($active_classrooms as $year => $establishments)
