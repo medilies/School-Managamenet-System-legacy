@@ -9,16 +9,18 @@ class Input extends Component
 
     public $type;
     public $name;
+    public $sms_set_value;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type, $name)
+    public function __construct($type, $name, $smsSetValue = '')
     {
         $this->type = $type;
         $this->name = $name;
+        $this->sms_set_value = $smsSetValue;
     }
 
     /**

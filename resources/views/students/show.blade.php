@@ -9,7 +9,7 @@
             <x-icons.user-group />
         </a>
 
-        <a href="{{ route('students.edit', ['student' => $student->id]) }}" title="Modifier la capacité des classes"
+        <a href="{{ route('students.edit', ['student' => $student->id]) }}" title="Modifier"
             class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
 
             <x-icons.pencil />

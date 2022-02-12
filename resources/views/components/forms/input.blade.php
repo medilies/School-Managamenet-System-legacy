@@ -6,7 +6,8 @@
     </label>
 
     {{-- INPUT --}}
-    <input name="{{ $name }}" type="{{ $type ?? 'text' }}" value="{{ old($name, '') }}" {{ $attributes }}
+    <input name="{{ $name }}" type="{{ $type ?? 'text' }}" value="{{ old($name, $sms_set_value) }}"
+        {{ $attributes }}
         class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-200 p-2 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
 
     {{-- ERROR MSG --}}

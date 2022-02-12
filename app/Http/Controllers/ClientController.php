@@ -59,7 +59,8 @@ class ClientController
      */
     public function edit(Client $client)
     {
-        //
+        return view("clients.edit")
+            ->with("client", $client);
     }
 
     /**

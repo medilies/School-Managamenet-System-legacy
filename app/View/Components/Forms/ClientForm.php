@@ -6,14 +6,16 @@ use Illuminate\View\Component;
 
 class ClientForm extends Component
 {
+    public $client_data;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($clientData = NULL)
     {
-        //
+        $this->client_data = $clientData;
     }
 
     /**

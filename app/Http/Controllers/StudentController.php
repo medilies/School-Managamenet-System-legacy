@@ -69,7 +69,8 @@ class StudentController
      */
     public function edit(Student $student)
     {
-        //
+        return view("students.edit")
+            ->with("student", $student);
     }
 
     /**
