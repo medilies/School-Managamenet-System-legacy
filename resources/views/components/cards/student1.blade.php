@@ -10,5 +10,6 @@
     </div>
     <div class="ml-2 p-1"> Email: <span class="font-bold"> {{ $student_data->email }} </span> </div>
 
+    {{ $slot }}
 
 </div>

@@ -1,4 +1,4 @@
-<div class="m-2 p-2 rounded-2xl">
+<div class="m-2 p-2 shadow-md rounded-2xl">
 
     <h3 class="w-full text-xl"> {{ $card_heading }} </h3>
 
@@ -9,5 +9,7 @@
     <div class="ml-2 p-1"> Email: <span class="text-gray-700 text-sm"> {{ $client_data->email }} </span> </div>
     <div class="ml-2 p-1"> Addresse: <span class="text-gray-700 text-sm"> {{ $client_data->address }} </span>
     </div>
+
+    {{ $slot }}
 
 </div>

@@ -39,6 +39,21 @@
 
                 <x-cards.client1 :client-data="$father">
                     <x-slot name="card_heading"> Le père </x-slot>
+                    <div class="flex items-center">
+
+                        <a href="{{ route('clients.show', ['client' => $father->id]) }}" title="Voir"
+                            class="inline-block bg-green-400 hover:bg-green-500 text-white mx-1 p-2 rounded-full">
+
+                            <x-icons.eye />
+                        </a>
+
+                        <a href="{{ route('clients.edit', ['client' => $father->id]) }}" title="Modifier"
+                            class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
+
+                            <x-icons.pencil />
+                        </a>
+
+                    </div>
                 </x-cards.client1>
             @endif
 
@@ -66,6 +81,21 @@
 
                 <x-cards.client1 :client-data="$mother">
                     <x-slot name="card_heading"> La mère </x-slot>
+                    <div class="flex items-center">
+
+                        <a href="{{ route('clients.show', ['client' => $mother->id]) }}" title="Voir"
+                            class="inline-block bg-green-400 hover:bg-green-500 text-white mx-1 p-2 rounded-full">
+
+                            <x-icons.eye />
+                        </a>
+
+                        <a href="{{ route('clients.edit', ['client' => $mother->id]) }}" title="Modifier"
+                            class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
+
+                            <x-icons.pencil />
+                        </a>
+
+                    </div>
                 </x-cards.client1>
             @endif
 
@@ -87,6 +117,21 @@
                 <div class="">
                     <x-cards.student1 :student-data="$student">
                         <x-slot name="card_heading"> élève </x-slot>
+                        <div class="flex items-center">
+
+                            <a href="{{ route('students.show', ['student' => $student->id]) }}" title="Voir"
+                                class="inline-block bg-green-400 hover:bg-green-500 text-white mx-1 p-2 rounded-full">
+
+                                <x-icons.eye />
+                            </a>
+
+                            <a href="{{ route('students.edit', ['student' => $student->id]) }}" title="Modifier"
+                                class="inline-block bg-blue-400 hover:bg-blue-500 text-white mx-1 p-2 rounded-full">
+
+                                <x-icons.pencil />
+                            </a>
+
+                        </div>
                     </x-cards.student1>
                     {{-- NEED JOINED QUERY to get latest classroom --}}
                     {{-- {{ $student->studentRegistrations->last()->id }} --}}

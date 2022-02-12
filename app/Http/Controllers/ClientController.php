@@ -49,7 +49,8 @@ class ClientController
      */
     public function show(Client $client)
     {
-        return $client;
+        return view("clients.show")
+            ->with("client", $client);
     }
 
     /**

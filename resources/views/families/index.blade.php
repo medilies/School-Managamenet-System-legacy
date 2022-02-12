@@ -51,4 +51,8 @@
             </tr>
         @endforeach
 
+    </table>
+
+    {{ $families->links() }}
+
 </x-app-layout>

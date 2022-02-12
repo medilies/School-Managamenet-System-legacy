@@ -59,7 +59,8 @@ class StudentController
      */
     public function show(Student $student)
     {
-        return $student;
+        return view("students.show")
+            ->with("student", $student);
     }
 
     /**

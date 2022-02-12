@@ -21,7 +21,7 @@ class FamilyController
     public function index()
     {
         return view("families.index")
-            ->with("families", Family::where("id", ">", 0)->withCount(['students', "clients"])->with('clients')->get());
+            ->with("families", Family::orderBy('id', 'desc')->withCount(['students', "clients"])->with('clients')->paginate(10));
     }
 
     /**
