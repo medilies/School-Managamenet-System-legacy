@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         <div class="mr-4">
             {{ strtoupper($establishment_year->composed_key) }}
         </div>
@@ -11,8 +11,7 @@
 
             <x-icons.pencil />
         </a>
-    </x-slot>
-
+    </x-slot:header>
 
     <table class="border-2 m-4">
 
@@ -24,7 +23,9 @@
         </tr>
 
         @foreach ($classrooms as $classroom)
-            @if ($classroom->capacity === 0) @php continue; @endphp @endif
+            @if ($classroom->capacity === 0)
+                @php continue; @endphp
+            @endif
 
             <tr>
                 <td class="border p-1"> {{ $classroom->classType->name }} </td>

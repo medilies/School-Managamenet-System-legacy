@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ __('Ajouté une nouvelle famille') }}
-    </x-slot>
+    </x-slot:header>
 
     <div class="flex content-between">
 
@@ -14,7 +14,7 @@
                 <input type="hidden" name="family_title" value="father">
 
                 <x-forms.client-form>
-                    <x-slot name="form_heading"> Ajouter le père</x-slot>
+                    <x-slot:form_heading> Ajouter le père </x-slot:form_heading>
                 </x-forms.client-form>
 
                 <x-forms.submit-btn> Ajouter </x-forms.submit-btn>
@@ -30,7 +30,7 @@
                 <input type="hidden" name="family_title" value="mother">
 
                 <x-forms.client-form>
-                    <x-slot name="form_heading"> Ajouter la mère</x-slot>
+                    <x-slot:form_heading> Ajouter la mère </x-slot:form_heading>
                 </x-forms.client-form>
 
                 <x-forms.submit-btn> Ajouter </x-forms.submit-btn>

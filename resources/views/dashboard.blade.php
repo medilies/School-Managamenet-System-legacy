@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ __('Dashboard') }}
-    </x-slot>
+    </x-slot:header>
 
     You're logged in!
 

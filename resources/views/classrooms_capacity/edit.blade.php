@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         <div class="mr-4">
             {{ strtoupper($establishment_year->composed_key) }}
         </div>
@@ -11,7 +11,7 @@
 
             <x-icons.eye />
         </a>
-    </x-slot>
+    </x-slot:header>
 
     <form
         action={{ route('classrooms_capacity.update', ['establishment_year' => $establishment_year->composed_key]) }}
@@ -23,7 +23,6 @@
         @foreach ($classroomsByCycle as $classrooms)
             <div class="mb-4 flex flex-wrap">
                 @foreach ($classrooms as $classroom)
-
                     <div class="bg-white w-96 m-1 p-2 rounded-md shadow-inner flex justify-between items-center">
 
                         <label for="{{ $classroom->id }}"> {{ $classroom->classType->name }} </label>

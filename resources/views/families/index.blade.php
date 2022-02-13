@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ __("L'index des familles") }}
 
         <a href="{{ route('families.create') }}" title="Ajouter une nouvelle famille"
@@ -9,7 +9,7 @@
             <x-icons.plus />
         </a>
 
-    </x-slot>
+    </x-slot:header>
 
     <table class="border-2 m-4">
 
@@ -31,10 +31,14 @@
                 <td class="border p-1"> {{ $family->id }} </td>
 
                 <td class="border p-1">
-                    @isset($father) {{ $father->full_name }} @endisset
+                    @isset($father)
+                        {{ $father->full_name }}
+                    @endisset
                 </td>
                 <td class="border p-1">
-                    @isset($mother) {{ $mother->full_name }} @endisset
+                    @isset($mother)
+                        {{ $mother->full_name }}
+                    @endisset
                 </td>
 
                 <td class="border p-1"> {{ $family->students_count }} </td>

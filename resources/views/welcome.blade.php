@@ -1,7 +1,7 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         Acceuil
-    </x-slot>
+    </x-slot:header>
 
 </x-app-layout>

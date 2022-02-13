@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ __('Liste des parents') }}
-    </x-slot>
+    </x-slot:header>
 
     <div class="overflow-x-auto">
         <div class="p-2 inline-block min-w-full">

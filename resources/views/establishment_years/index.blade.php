@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ __("L'index des années scolaires") }}
 
         <a href="{{ route('establishment-years.create') }}"
@@ -9,7 +9,7 @@
 
             <x-icons.plus />
         </a>
-    </x-slot>
+    </x-slot:header>
 
     @foreach ($yearsByyear as $key_year => $years)
         <div class="mt-8 mb-2 flex items-center">
@@ -24,7 +24,6 @@
                     composed-key="{{ $year->composed_key }}" />
             @endforeach
         </div>
-
     @endforeach
 
 

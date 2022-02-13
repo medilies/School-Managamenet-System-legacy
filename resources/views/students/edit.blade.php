@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ $student->full_name }}
 
         <a href="{{ route('families.show', ['family' => $student->family_id]) }}" title="Voir la famille"
@@ -15,7 +15,7 @@
             <x-icons.eye />
         </a>
 
-    </x-slot>
+    </x-slot:header>
 
     <div class="bg-white w-auto my-4 mx-8 p-2 shadow-inner rounded-lg">
         <form action={{ route('students.update', ['student' => $student->id]) }} method="post">
@@ -24,7 +24,7 @@
             @method('PUT')
 
             <x-forms.student-form :student-data="$student" :update-form="1">
-                <x-slot name="form_heading"> Mettre à jour les données de l'étudiant </x-slot>
+                <x-slot:form_heading> Mettre à jour les données de l'étudiant </x-slot:form_heading>
             </x-forms.student-form>
 
             <x-forms.submit-btn> Mettre à jour </x-forms.submit-btn>

@@ -43,39 +43,39 @@
 
                 <x-nav.simple-anchor href="{{ route('home') }}">
                     <x-icons.home />
-                    <x-slot name="label"> Acceuil </x-slot>
+                    <x-slot:label> Acceuil </x-slot:label>
                 </x-nav.simple-anchor>
 
                 <x-nav.simple-anchor href="{{ route('dashboard') }}">
                     <x-icons.view-grid />
-                    <x-slot name="label"> Dashboard </x-slot>
+                    <x-slot:label> Dashboard </x-slot:label>
                 </x-nav.simple-anchor>
 
                 <x-nav.simple-anchor href="{{ route('establishments.index') }}">
                     <x-icons.office-building />
-                    <x-slot name="label"> Etablisments </x-slot>
+                    <x-slot:label> Etablisments </x-slot:label>
                 </x-nav.simple-anchor>
 
                 <x-nav.simple-anchor href="{{ route('establishment-years.index') }}">
                     <x-icons.calendar />
-                    <x-slot name="label"> Années scolaires </x-slot>
+                    <x-slot:label> Années scolaires </x-slot:label>
                 </x-nav.simple-anchor>
 
                 <x-nav.active-years />
 
                 <x-nav.simple-anchor href="{{ route('families.index') }}">
                     <x-icons.user-group />
-                    <x-slot name="label"> Les familles </x-slot>
+                    <x-slot:label> Les familles </x-slot:label>
                 </x-nav.simple-anchor>
 
                 <x-nav.simple-anchor href="{{ route('students.index') }}">
                     <x-icons.user />
-                    <x-slot name="label"> Les élèves </x-slot>
+                    <x-slot:label> Les élèves </x-slot:label>
                 </x-nav.simple-anchor>
 
                 <x-nav.simple-anchor href="{{ route('clients.index') }}">
                     <x-icons.users />
-                    <x-slot name="label"> Les parents </x-slot>
+                    <x-slot:label> Les parents </x-slot:label>
                 </x-nav.simple-anchor>
 
             </nav>

@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ __('Ajouté la nouvelle année scolaire') }}
-    </x-slot>
+    </x-slot:header>
 
     <form action={{ route('establishment-years.store') }} method="post">
 

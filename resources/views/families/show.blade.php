@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ __('La famille') }}
         @isset($father->lname)
             {{ $father->lname }}
@@ -12,7 +12,7 @@
             <x-icons.plus />
         </a>
 
-    </x-slot>
+    </x-slot:header>
 
     {{-- CLIENTS --}}
     <div class="flex content-between">
@@ -28,7 +28,7 @@
                     <input type="hidden" name="family_id" value="{{ $family_id }}">
 
                     <x-forms.client-form>
-                        <x-slot name="form_heading"> Ajouter le père</x-slot>
+                        <x-slot:form_heading> Ajouter le père </x-slot:form_heading>
                     </x-forms.client-form>
 
                     <x-forms.submit-btn> Ajouter </x-forms.submit-btn>
@@ -38,7 +38,7 @@
             @else
 
                 <x-cards.client1 :client-data="$father">
-                    <x-slot name="card_heading"> Le père </x-slot>
+                    <x-slot:card_heading> Le père </x-slot:card_heading>
                     <div class="flex items-center">
 
                         <a href="{{ route('clients.show', ['client' => $father->id]) }}" title="Voir"
@@ -70,7 +70,7 @@
                     <input type="hidden" name="family_id" value="{{ $family_id }}">
 
                     <x-forms.client-form>
-                        <x-slot name="form_heading"> Ajouter la mère</x-slot>
+                        <x-slot:form_heading> Ajouter la mère</x-slot:form_heading>
                     </x-forms.client-form>
 
                     <x-forms.submit-btn> Ajouter </x-forms.submit-btn>
@@ -80,7 +80,7 @@
             @else
 
                 <x-cards.client1 :client-data="$mother">
-                    <x-slot name="card_heading"> La mère </x-slot>
+                    <x-slot:card_heading> La mère </x-slot:card_heading>
                     <div class="flex items-center">
 
                         <a href="{{ route('clients.show', ['client' => $mother->id]) }}" title="Voir"
@@ -116,7 +116,7 @@
             @foreach ($students as $student)
                 <div class="">
                     <x-cards.student1 :student-data="$student">
-                        <x-slot name="card_heading"> élève </x-slot>
+                        <x-slot:card_heading> élève </x-slot:card_heading>
                         <div class="flex items-center">
 
                             <a href="{{ route('students.show', ['student' => $student->id]) }}" title="Voir"
@@ -146,7 +146,7 @@
                     <input type="hidden" name="family_id" value="{{ $family_id }}">
 
                     <x-forms.student-form>
-                        <x-slot name="form_heading"> Ajouter un fils (élève) </x-slot>
+                        <x-slot:form_heading> Ajouter un fils (élève) </x-slot:form_heading>
                     </x-forms.student-form>
 
                     <x-forms.submit-btn> Ajouter </x-forms.submit-btn>

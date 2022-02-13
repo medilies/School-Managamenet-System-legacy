@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ $client->full_name }}
 
         <a href="{{ route('families.show', ['family' => $client->family_id]) }}" title="Voir la famille"
@@ -15,10 +15,10 @@
             <x-icons.pencil />
         </a>
 
-    </x-slot>
+    </x-slot:header>
 
     <x-cards.client1 :client-data="$client" class="bg-white w-1/2 py-2 px-4 m-4 shadow-inner rounded-lg">
-        <x-slot name="card_heading"> </x-slot>
+        <x-slot:card_heading> </x-slot:card_heading>
     </x-cards.client1>
 
 </x-app-layout>

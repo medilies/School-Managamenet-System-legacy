@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <x-slot name="header">
+    <x-slot:header>
         {{ strtoupper($establishment_year->composed_key) }} - {{ $class_type }}
-    </x-slot>
+    </x-slot:header>
 
     <p>
         <a href="{{ route('establishment-years.show', ['establishment_year' => "$establishment_year->composed_key"]) }}"

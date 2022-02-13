@@ -1,6 +1,6 @@
 <x-nav.simple-anchor>
     <x-icons.chevron-down />
-    <x-slot name="label"> Années scolaires Actifs...</x-slot>
+    <x-slot:label> Années scolaires Actifs...</x-slot:label>
 </x-nav.simple-anchor>
 
 <div class="flex p-2">
@@ -15,8 +15,8 @@
 
                 <x-icons.calendar />
 
-                <x-slot name="label"> {{ $establishment_year->year_id }} {{ $establishment_year->establishment_id }}
-                </x-slot>
+                <x-slot:label> {{ $establishment_year->year_id }} {{ $establishment_year->establishment_id }}
+                </x-slot:label>
 
             </x-nav.simple-anchor>
         @endforeach
