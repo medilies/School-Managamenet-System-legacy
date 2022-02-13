@@ -7,10 +7,10 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Classroom;
 use App\Models\Family;
 use App\Models\Student;
-use Illuminate\Http\Request;
 
 class StudentController
 {
@@ -78,9 +78,11 @@ class StudentController
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(UpdateStudentRequest $request, Student $student)
     {
-        //
+        $student->update($request->validated());
+
+        return redirect()->route("students.show", ["student" => $student->id]);
     }
 
     /**

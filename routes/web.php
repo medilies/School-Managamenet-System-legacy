@@ -9,6 +9,7 @@ use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentRegistrationController;
 use App\Http\Controllers\YearController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
