@@ -145,7 +145,7 @@
                     @csrf
                     <input type="hidden" name="family_id" value="{{ $family_id }}">
 
-                    <x-forms.student-form :active-classrooms="$active_classrooms">
+                    <x-forms.student-form>
                         <x-slot name="form_heading"> Ajouter un fils (élève) </x-slot>
                     </x-forms.student-form>
 

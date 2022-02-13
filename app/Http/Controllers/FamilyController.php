@@ -38,11 +38,8 @@ class FamilyController
      */
     public function store(StoreClientRequest $request)
     {
-
-        $client_validated_data = $request->validated();
-
         $family = Family::create();
-        $family->clients()->create($client_validated_data);
+        $family->clients()->create($request->validated());
 
         return redirect()->route('families.show', ['family' => $family->id]);
     }
@@ -59,7 +56,6 @@ class FamilyController
             ->with('family_id', $family->id)
             ->with('father', $clients->where('family_title', 'father')->first())
             ->with('mother', $clients->where('family_title', 'mother')->first())
-            ->with('students', $family->students()->with(['studentRegistrations'])->get())
-            ->with('active_classrooms', Classroom::nonarchivedActiveClassrooms());
+            ->with('students', $family->students()->with(['studentRegistrations'])->get());
     }
 }

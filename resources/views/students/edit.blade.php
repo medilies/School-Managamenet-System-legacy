@@ -23,7 +23,7 @@
             @csrf
             @method('PUT')
 
-            <x-forms.student-form :student-data="$student">
+            <x-forms.student-form :student-data="$student" :update-form="1">
                 <x-slot name="form_heading"> Mettre à jour les données de l'étudiant </x-slot>
             </x-forms.student-form>
 

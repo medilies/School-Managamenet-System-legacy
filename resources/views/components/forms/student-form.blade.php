@@ -1,4 +1,4 @@
-<div class="flex flex-wrap mx-2 ">
+<div class="flex flex-wrap justify-around items-end mx-2">
 
     <h3 class="w-full text-xl"> {{ $form_heading }} </h3>
 
@@ -44,10 +44,11 @@
         </x-slot>
     </x-forms.input>
 
+
     @isset($active_classrooms)
 
         <select name="classroom"
-            class="bg-gray-100 text-gray-700 border border-gray-200 focus:outline-none focus:bg-white focus:border-gray-500 w-1/2 m-2 rounded-md">
+            class="bg-gray-100 text-gray-700 border border-gray-200 focus:outline-none focus:bg-white focus:border-gray-500 w-1/2 h-11 m-2 rounded-md">
             <option disabled selected value> -- Séléctionnez une classe -- </option>
 
             @foreach ($active_classrooms as $year => $establishments)
@@ -66,5 +67,33 @@
 
         </select>
     @endisset
+
+    @empty($update_form)
+
+
+        <x-forms.input name="ex_registration_establishment" type="text">
+            <x-slot name="label_text"> L'ancien établissement </x-slot>
+        </x-forms.input>
+
+        @isset($class_types_names)
+
+            <div class="w-full md:w-1/2 px-3 mt-3">
+                <select name="ex_registration_classroom"
+                    class="bg-gray-100 text-gray-700 border border-gray-200 focus:outline-none focus:bg-white focus:border-gray-500 h-11 rounded-md">
+                    <option disabled selected value> -- L'ancienne classe -- </option>
+
+                    @foreach ($class_types_names as $class_type)
+                        <option value="{{ $class_type }}">{{ $class_type }}</option>
+                    @endforeach
+
+                </select>
+                @error('ex_registration_classroom')
+                    <div class="text-red-500 mt-2 text-sm">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+        @endisset
+    @endempty
 
 </div>

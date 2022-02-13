@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class StoreStudentRequest extends FormRequest
 {
@@ -14,6 +16,13 @@ class StoreStudentRequest extends FormRequest
     public function authorize()
     {
         return true;
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'classroom_id' => $this->classroom,
+        ]);
     }
 
     /**
@@ -31,7 +40,10 @@ class StoreStudentRequest extends FormRequest
             'bday' => ['required', 'date'],
             'bplace' => ['required', 'max:32',],
             'email' => ['nullable', 'email',],
-            'family_id' => ['nullable', 'integer',]
+            'family_id' => ['required', 'integer',],
+            'classroom_id' => ['required', 'integer'], // Rule::in(nonArchivedActiveClassroomsIds)
+            'ex_registration_establishment' => ['nullable', 'max:50'],
+            'ex_registration_classroom' => ['nullable', Rule::in(DB::table('class_types')->pluck('name')->toArray())],
         ];
     }
 

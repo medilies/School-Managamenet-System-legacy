@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Classroom;
 use App\Models\Family;
 use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class StudentController
 {
@@ -31,23 +32,21 @@ class StudentController
      */
     public function store(StoreStudentRequest $request)
     {
-
-        if (!isset($request->family_id)) {
-            return response("L'étudiant doit appartenir à une famille.", 401);
-        };
-
         $family = Family::findOrFail($request->family_id);
-        $student = $family->students()->create($request->validated());
+        $classroom = Classroom::with("establishmentYear")->findOrFail($request->classroom_id);
 
-        if (isset($request->classroom)) {
-            $classroom = Classroom::with("establishmentYear")->findOrFail($request->classroom);
+        // if (!$classroom->capacity > 0 || $classroom->year->is_locked) {
+        //     throw new \Exception("La capacity de la classe doit etre superieur à 0 et l'année doit etre modifiable", 1);
+        // }
 
-            // if (!$classroom->capacity > 0 || $classroom->year->is_locked) {
-            //     throw new \Exception("La capacity de la classe doit etre superieur à 0 et l'année doit etre modifiable", 1);
-            // }
+        DB::transaction(function () use ($family, $classroom, $request) {
+            $student = $family->students()->create($request->validated());
+            $classroom->studentRegistrations()->create(array_merge(
+                ["student_id" => $student->id],
+                $request->safe()->only('ex_registration_establishment', 'ex_registration_classroom')
+            ));
+        });
 
-            $classroom->studentRegistrations()->create(["student_id" => $student->id]);
-        }
 
         return back();
         // return redirect()->route('students.index');

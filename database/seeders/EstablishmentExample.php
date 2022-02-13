@@ -22,8 +22,8 @@ class EstablishmentExample extends Seeder
 
         DB::table('years')->insert([
             [
-                'id' => '2021',
-                "state" => "current"
+                'id' => '2022',
+                "state" => "upcoming"
             ],
         ]);
     }

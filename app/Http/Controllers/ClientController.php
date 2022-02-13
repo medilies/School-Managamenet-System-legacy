@@ -31,12 +31,7 @@ class ClientController
      */
     public function store(StoreClientRequest $request)
     {
-
-        if (!isset($request->family_id)) {
-            return response("Le client doit appartenir à une famille.", 401);
-        };
-
-        $family = Family::find($request->family_id);
+        $family = Family::findOrFail($request->family_id);
         $family->clients()->create($request->validated());
 
         return back();

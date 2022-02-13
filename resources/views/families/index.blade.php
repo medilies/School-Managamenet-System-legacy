@@ -30,19 +30,15 @@
             <tr>
                 <td class="border p-1"> {{ $family->id }} </td>
 
-                @isset($father)
-                    <td class="border p-1"> {{ $father->full_name }} </td>
-                @else
-                    <td></td>
-                @endisset
-
-                @isset($mother)
-                    <td class="border p-1"> {{ $mother->full_name }} </td>
-                @else
-                    <td></td>
-                @endisset
+                <td class="border p-1">
+                    @isset($father) {{ $father->full_name }} @endisset
+                </td>
+                <td class="border p-1">
+                    @isset($mother) {{ $mother->full_name }} @endisset
+                </td>
 
                 <td class="border p-1"> {{ $family->students_count }} </td>
+
                 <td class="border p-1">
                     <a href="{{ route('families.show', ['family' => $family->id]) }}" class="text-indigo-600">
                         Voir </a>
