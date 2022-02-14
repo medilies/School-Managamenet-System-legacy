@@ -39,10 +39,10 @@ require __DIR__ . '/auth.php';
 |-------------------------------------
 */
 
-Route::resource('establishments', YearController::class)->except(['destroy'])->middleware(['auth']);
-Route::resource('establishments', EstablishmentController::class)->middleware(['auth']);
+// Route::resource('establishments', YearController::class)->except(['destroy'])->middleware(['auth']);
+// Route::resource('establishments', EstablishmentController::class)->middleware(['auth']);
 
-Route::resource('establishment-years', EstablishmentYearController::class)->except(['edit', 'update', 'destoy'])->middleware(['auth']);
+Route::resource('establishment-years', EstablishmentYearController::class)->only(['index', 'show'])->middleware(['auth']);
 
 Route::controller(ClassroomsCapacityController::class)
     ->prefix("classrooms-capacity/establishment_year/")
