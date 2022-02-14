@@ -27,6 +27,7 @@ services:
             - mysql
     mysql:
         image: 'mysql/mysql-server:8.0'
+
         restart: always
         environment:
             TZ: Africa/Algiers
