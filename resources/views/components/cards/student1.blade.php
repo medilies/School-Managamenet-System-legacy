@@ -9,7 +9,13 @@
         </span>
     </div>
     <div class="ml-2 p-1"> Email: <span class="font-bold"> {{ $student_data->email }} </span> </div>
-    <div class="ml-2 p-1"> Classe actuelle: <span class="font-bold"> - </span> </div>
+    <div class="ml-2 p-1"> La derniere inscription: <span class="font-bold">
+            {{ $student_data->class_type }} (
+            {{ $student_data->status }} ) </span> </div>
+    <div class="ml-4 p-1 text-sm"> L'ancienne classe:
+        {{ $student_data->ex_registration_classroom }}
+        {{ $student_data->ex_registration_establishment }}
+    </div>
 
     {{ $slot }}
 

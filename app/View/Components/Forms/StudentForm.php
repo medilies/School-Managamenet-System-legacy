@@ -22,7 +22,7 @@ class StudentForm extends Component
     {
         if (!$updateForm) {
             $this->active_classrooms = Classroom::nonarchivedActiveClassrooms();
-            $this->class_types_names = DB::table('class_types')->pluck('name')->toArray();
+            $this->class_types_names = DB::table('class_types')->orderBy('id')->pluck('name')->toArray();
         }
         $this->student_data = $studentData;
         $this->update_form = $updateForm;

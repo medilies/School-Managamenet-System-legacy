@@ -7,8 +7,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use App\Http\Requests\StoreClientRequest;
-use App\Models\Classroom;
 use App\Models\Family;
+use App\Models\Student;
 
 class FamilyController
 {
@@ -52,10 +52,14 @@ class FamilyController
     {
         $clients = $family->clients;
 
+        $students = Student::getStudentsWithLatestRegitration()
+            ->whereIn('students.id', Student::where("family_id", $family->id)->pluck('id')->toArray())
+            ->get();
+
         return view('families.show')
             ->with('family_id', $family->id)
             ->with('father', $clients->where('family_title', 'father')->first())
             ->with('mother', $clients->where('family_title', 'mother')->first())
-            ->with('students', $family->students()->with(['studentRegistrations'])->get());
+            ->with('students', $students);
     }
 }
