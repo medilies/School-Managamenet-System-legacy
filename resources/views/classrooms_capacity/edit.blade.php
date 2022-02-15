@@ -27,7 +27,7 @@
 
                         <label for="{{ $classroom->id }}"> {{ $classroom->classType->name }} </label>
 
-                        <input type="number" min="0" name="{{ $classroom->id }}"
+                        <input type="number" min="0" name="k_{{ $classroom->id }}"
                             value="{{ old($classroom->id, $classroom->capacity) }}"
                             class="w-24 h-8 rounded-sm border-gray-500">
 

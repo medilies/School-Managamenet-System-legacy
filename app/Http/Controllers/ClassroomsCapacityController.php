@@ -7,10 +7,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use App\Models\Classroom;
-use App\Models\ClassType;
 use App\Models\EstablishmentYear;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\UpdateClassroomCapacityRequest;
 
 /**
  * Grabs a year's (example sabah-2022) classrooms and bulk update their capacity
@@ -35,29 +33,13 @@ class ClassroomsCapacityController
      * @param  \App\Models\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(UpdateClassroomCapacityRequest $request)
     {
-        // Validation will need a lot of elaboration
+        foreach ($request->validated() as $id => $capacity) {
 
-        $class_types = ClassType::all();
-
-        $first_classroom_id = $request->first_classroom_id;
-
-        DB::transaction(function () use ($first_classroom_id, $class_types, $request) {
-
-            for ($i = $first_classroom_id; $i < $first_classroom_id + $class_types->count(); $i++) {
-                $classroom_id = $i;
-                $capacity = $request[$i];
-
-                if (!is_numeric($capacity)) {
-                    throw new \Exception("$capacity is not an integer!");
-                    // generate validation msg
-                }
-
-                Classroom::where('id', $classroom_id)
-                    ->update(['capacity' => $capacity]);
-            }
-        });
+            Classroom::where('id', trim($id, 'k_'))
+                ->update(['capacity' => $capacity]);
+        }
 
         return back();
     }
